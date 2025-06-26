@@ -4,14 +4,23 @@ import 'package:go_router/go_router.dart';
 class SoundCard extends StatelessWidget {
   final String title;
   final String image;
-  const SoundCard({super.key, required this.title, required this.image});
+  final String sound;
+  const SoundCard({
+    super.key,
+    required this.title,
+    required this.image,
+    required this.sound,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
         onTap: () {
-          context.go('/timer_screen', extra: {'image': image, 'title': title});
+          context.go(
+            '/timer_screen',
+            extra: {'image': image, 'title': title, 'sound': sound},
+          );
         },
         child: Container(
           height: 170,
