@@ -10,7 +10,12 @@ final router = GoRouter(
     GoRoute(path: '/home', builder: (context, state) => HomeScreen()),
     GoRoute(
       path: '/timer_screen',
-      builder: (context, state) => TainmerScreen(),
+      builder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>;
+        final title = extra['title'];
+        final image = extra['image'];
+        return TainmerScreen(image: image!, title: title!);
+      },
     ),
   ],
 );
