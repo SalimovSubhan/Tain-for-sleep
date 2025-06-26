@@ -17,7 +17,7 @@ class SoundCard extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         onTap: () {
-          context.go(
+          context.push(
             '/timer_screen',
             extra: {'image': image, 'title': title, 'sound': sound},
           );
