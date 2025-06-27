@@ -7,10 +7,11 @@ class RainScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ignore: prefer_const_constructors
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 42, 78, 162),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
+      backgroundColor: const Color.fromARGB(255, 42, 78, 162),
+      body: const Padding(
+        padding: EdgeInsets.all(10),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(

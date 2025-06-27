@@ -13,36 +13,36 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0E2A6C),
-        title: Text('Звуки сна', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color(0xFF0E2A6C),
+        title: const Text('Звуки сна', style: TextStyle(color: Colors.white)),
       ),
       body: DefaultTabController(
         length: 5,
         child: Column(
           children: [
             Container(
-              color: Color(0xFF0E2A6C),
-              padding: EdgeInsets.only(bottom: 10, top: 15),
+              color: const Color(0xFF0E2A6C),
+              padding: const EdgeInsets.only(bottom: 10, top: 15),
               child: ButtonsTabBar(
                 height: 35,
-                buttonMargin: EdgeInsets.symmetric(horizontal: 20),
+                buttonMargin: const EdgeInsets.symmetric(horizontal: 20),
                 unselectedDecoration: BoxDecoration(
-                  color: Color.fromARGB(255, 29, 52, 107),
+                  color: const Color.fromARGB(255, 29, 52, 107),
                   borderRadius: BorderRadius.circular(100),
                 ),
-                contentPadding: EdgeInsets.symmetric(horizontal: 25),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 25),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [
-                      const Color.fromARGB(255, 19, 137, 234),
-                      const Color.fromARGB(255, 2, 65, 116),
+                      Color.fromARGB(255, 19, 137, 234),
+                      Color.fromARGB(255, 2, 65, 116),
                     ],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
                 ),
-                tabs: [
+                tabs: const [
                   Tab(
                     child: Text(
                       'Все',
@@ -76,8 +76,9 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+            // ignore: prefer_const_constructors
             Expanded(
-              child: TabBarView(
+              child: const TabBarView(
                 children: [
                   AllScreen(),
                   SllipScreen(),

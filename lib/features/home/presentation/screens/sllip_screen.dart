@@ -7,10 +7,10 @@ class SllipScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Color.fromARGB(255, 42, 78, 162),
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(10),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(

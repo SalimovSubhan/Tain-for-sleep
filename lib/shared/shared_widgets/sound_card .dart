@@ -37,12 +37,12 @@ class SoundCard extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: Colors.black.withAlpha(108),
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
               ),
             ),
-            child: Text(title, style: TextStyle(color: Colors.white)),
+            child: Text(title, style: const TextStyle(color: Colors.white)),
           ),
         ),
       ),

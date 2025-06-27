@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:rain_for_sleep/features/taimer_screen/presentation/providers/providers.dart';
 import 'package:rain_for_sleep/features/taimer_screen/presentation/widgets/castom_dialog_widget.dart';
 
 class TimerScreen extends HookConsumerWidget {
@@ -22,32 +23,43 @@ class TimerScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final player = useMemoized(() => AudioPlayer());
-    final isPlying = useState<bool>(true);
-    final showDialog = useState<bool>(false);
-    final startSecond = useState<int>(0);
-    final secondForText = useState<String?>(null);
+    final isPlyingNotifire = useMemoized(() => ValueNotifier<bool>(true));
+    final secondForText = useMemoized(() => ValueNotifier<String?>(null));
+    final showCastomDialog = useState<bool>(false);
+    final switchTimer = useState<int>(0);
+    final groupValueForCastomDialog = useState<int?>(null);
+    var startSecond = switchTimer.value;
+    Timer? timer;
 
     void formatTime({required int sec}) {
       final hour = sec ~/ 3600;
       final minute = (sec % 3600) ~/ 60;
       final sek = sec % 60;
-      secondForText.value =
-          '${hour ~/ 10}${hour % 10}:${minute ~/ 10}${minute % 10}:${sek ~/ 10}${sek % 10}';
+      if (sec <= 0) {
+        player.stop();
+        isPlyingNotifire.value = false;
+        ref.read(secondprovider.notifier).state = 0;
+        secondForText.value = null;
+      } else if (hour > 0) {
+        secondForText.value =
+            '${hour ~/ 10}${hour % 10}:${minute ~/ 10}${minute % 10}:${sek ~/ 10}${sek % 10}';
+      } else {
+        secondForText.value =
+            '${minute ~/ 10}${minute % 10}:${sek ~/ 10}${sek % 10}';
+      }
     }
 
     useEffect(() {
-      Timer? timer;
-      timer = Timer.periodic(Duration(seconds: 1), (timer) {
-        if (startSecond.value > 0) {
-          startSecond.value--;
-          formatTime(sec: startSecond.value);
-        } else {
-          secondForText.value = null;
-          timer.cancel();
+      timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (startSecond > 0) {
+          startSecond--;
+          formatTime(sec: startSecond);
         }
       });
-      return timer.cancel;
-    }, [startSecond.value]);
+      return () {
+        timer?.cancel();
+      };
+    }, [switchTimer.value]);
 
     useEffect(() {
       player.setAsset(sound).then((value) {
@@ -59,9 +71,9 @@ class TimerScreen extends HookConsumerWidget {
     }, []);
 
     return PopScope(
-      canPop: !showDialog.value,
+      canPop: !showCastomDialog.value,
       onPopInvokedWithResult: (didPop, result) {
-        showDialog.value = false;
+        showCastomDialog.value = false;
       },
       child: Scaffold(
         backgroundColor: const Color.fromARGB(149, 119, 195, 122),
@@ -84,17 +96,17 @@ class TimerScreen extends HookConsumerWidget {
                             onTap: () {
                               context.pop();
                             },
-                            child: Icon(Icons.close, color: Colors.white),
+                            child: const Icon(Icons.close, color: Colors.white),
                           ),
                           Text(
                             title,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 17,
                             ),
                           ),
-                          Icon(
+                          const Icon(
                             Icons.add_circle_outline_sharp,
                             color: Colors.white,
                           ),
@@ -109,43 +121,50 @@ class TimerScreen extends HookConsumerWidget {
                           image: AssetImage(image),
                           fit: BoxFit.cover,
                         ),
-                        color: Colors.blue,
+                        color: const Color.fromARGB(255, 36, 152, 247),
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
 
-                    SizedBox(height: 70),
+                    const SizedBox(height: 70),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.add_circle_outline,
                           color: Colors.white,
                           size: 30,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 40),
-                          child: GestureDetector(
-                            onTap: () {
-                              isPlying.value = !isPlying.value;
-                              isPlying.value ? player.play() : player.stop();
+                          child: ValueListenableBuilder(
+                            valueListenable: isPlyingNotifire,
+                            builder: (context, isPlying, child) {
+                              return GestureDetector(
+                                onTap: () {
+                                  isPlyingNotifire.value = !isPlying;
+                                  isPlyingNotifire.value
+                                      ? player.play()
+                                      : player.stop();
+                                },
+                                child: CircleAvatar(
+                                  radius: 28,
+                                  backgroundColor: Colors.white,
+                                  child: Icon(
+                                    isPlying ? Icons.pause : Icons.play_arrow,
+                                  ),
+                                ),
+                              );
                             },
-                            child: CircleAvatar(
-                              radius: 28,
-                              backgroundColor: Colors.white,
-                              child: Icon(
-                                isPlying.value ? Icons.pause : Icons.play_arrow,
-                              ),
-                            ),
                           ),
                         ),
                         Row(
                           children: [
                             GestureDetector(
                               onTap: () {
-                                showDialog.value = true;
+                                showCastomDialog.value = true;
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.timer_sharp,
                                 color: Colors.white,
                                 size: 30,
@@ -155,20 +174,32 @@ class TimerScreen extends HookConsumerWidget {
                         ),
                       ],
                     ),
-
-                    secondForText.value != null
-                        ? Text('${secondForText.value}')
-                        : SizedBox.shrink(),
+                    const SizedBox(height: 10),
+                    ValueListenableBuilder(
+                      valueListenable: secondForText,
+                      builder: (context, value, child) {
+                        return value != null
+                            ? Text(
+                              value,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            )
+                            : const SizedBox.shrink();
+                      },
+                    ),
                   ],
                 ),
               ),
             ),
-            showDialog.value
+            showCastomDialog.value
                 ? CastomDialogWidget(
-                  startSecond: startSecond,
-                  showDialog: showDialog,
+                  groupValueForCastomDialog: groupValueForCastomDialog,
+                  showCastomDialog: showCastomDialog,
+                  switchTimer: switchTimer,
                 )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
           ],
         ),
       ),

@@ -18,7 +18,7 @@ class RadioWithTextWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(top: 25),
+        margin: const EdgeInsets.only(top: 25),
         color: Colors.amber.withAlpha(0),
         child: Row(
           children: [
@@ -26,15 +26,18 @@ class RadioWithTextWidget extends StatelessWidget {
               radius: 10,
               backgroundColor: Colors.white,
               child: Padding(
-                padding: EdgeInsets.all(4),
+                padding: const EdgeInsets.all(4),
                 child: CircleAvatar(
                   backgroundColor: isSelected ? Colors.blue : Colors.white,
                   radius: 10,
                 ),
               ),
             ),
-            SizedBox(width: 15),
-            Text(title, style: TextStyle(color: Colors.white, fontSize: 17)),
+            const SizedBox(width: 15),
+            Text(
+              title,
+              style: const TextStyle(color: Colors.white, fontSize: 17),
+            ),
           ],
         ),
       ),
