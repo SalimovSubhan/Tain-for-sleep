@@ -53,11 +53,22 @@ class CastomDialogWidget extends HookConsumerWidget {
             RadioWithTextWidget(
               title: 'Настройка длительност',
               value: 2,
-              onTap: () {
-                groupValueForCastomDialog.value = 2;
+              onTap: () async {
+                final piker = await showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+                );
+                if (piker != null &&
+                    piker.hour >= TimeOfDay.now().hour &&
+                    piker.minute > TimeOfDay.now().minute) {
+                  final hour = (piker.hour - TimeOfDay.now().hour) * 3600;
+                  final minute = (piker.minute - TimeOfDay.now().minute) * 60;
+                  final result = hour + minute;
 
-                showCastomDialog.value = false;
-                switchTimer.value = 2;
+                  groupValueForCastomDialog.value = 2;
+                  showCastomDialog.value = false;
+                  switchTimer.value = result;
+                }
               },
               isSelected: groupValueForCastomDialog.value == 2,
             ),
