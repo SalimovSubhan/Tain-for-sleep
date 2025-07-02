@@ -51,13 +51,13 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Tab(
                     child: Text(
-                      'Сон',
+                      'Дождь',
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ),
                   Tab(
                     child: Text(
-                      'Дождь',
+                      'Сон',
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ),
@@ -81,8 +81,8 @@ class HomeScreen extends StatelessWidget {
               child: const TabBarView(
                 children: [
                   AllScreen(),
-                  SllipScreen(),
                   RainScreen(),
+                  SllipScreen(),
                   RelaxScreen(),
                   WorkScreen(),
                 ],

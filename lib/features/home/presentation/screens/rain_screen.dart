@@ -21,13 +21,13 @@ class RainScreen extends HookConsumerWidget {
                 children: [
                   SoundCard(
                     title: 'дожд',
-                    image: 'assets/images/nature.avif',
+                    image: 'assets/images/rain/rain_1.png',
                     sound: 'assets/sounds/rain.mp3',
                   ),
                   SizedBox(width: 15),
                   SoundCard(
                     title: 'дожд',
-                    image: 'assets/images/nature.avif',
+                    image: 'assets/images/rain/rain_2.png',
                     sound: 'assets/sounds/rain.mp3',
                   ),
                 ],
@@ -38,13 +38,13 @@ class RainScreen extends HookConsumerWidget {
                 children: [
                   SoundCard(
                     title: 'дожд',
-                    image: 'assets/images/nature.avif',
+                    image: 'assets/images/rain/rain_3.png',
                     sound: 'assets/sounds/rain.mp3',
                   ),
                   SizedBox(width: 15),
                   SoundCard(
                     title: 'дожд',
-                    image: 'assets/images/nature.avif',
+                    image: 'assets/images/rain/rain_4.png',
                     sound: 'assets/sounds/rain.mp3',
                   ),
                 ],
@@ -55,13 +55,13 @@ class RainScreen extends HookConsumerWidget {
                 children: [
                   SoundCard(
                     title: 'дожд',
-                    image: 'assets/images/nature.avif',
+                    image: 'assets/images/rain/rain_5.png',
                     sound: 'assets/sounds/rain.mp3',
                   ),
                   SizedBox(width: 15),
                   SoundCard(
                     title: 'дожд',
-                    image: 'assets/images/nature.avif',
+                    image: 'assets/images/rain/rain_6.png',
                     sound: 'assets/sounds/rain.mp3',
                   ),
                 ],
@@ -72,13 +72,13 @@ class RainScreen extends HookConsumerWidget {
                 children: [
                   SoundCard(
                     title: 'дожд',
-                    image: 'assets/images/nature.avif',
+                    image: 'assets/images/rain/rain_7.png',
                     sound: 'assets/sounds/rain.mp3',
                   ),
                   SizedBox(width: 15),
                   SoundCard(
                     title: 'дожд',
-                    image: 'assets/images/nature.avif',
+                    image: 'assets/images/rain/rain_8.png',
                     sound: 'assets/sounds/rain.mp3',
                   ),
                 ],
