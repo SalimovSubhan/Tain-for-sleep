@@ -4,7 +4,7 @@ import 'package:rain_for_sleep/features/home/presentation/screens/all_screen.dar
 import 'package:rain_for_sleep/features/home/presentation/screens/rain_screen.dart';
 import 'package:rain_for_sleep/features/home/presentation/screens/relax_screen.dart';
 import 'package:rain_for_sleep/features/home/presentation/screens/sllip_screen.dart';
-import 'package:rain_for_sleep/features/home/presentation/screens/work_screen.dart';
+import 'package:rain_for_sleep/features/home/presentation/screens/snow_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -57,6 +57,12 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Tab(
                     child: Text(
+                      'Снег',
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
                       'Сон',
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
@@ -64,12 +70,6 @@ class HomeScreen extends StatelessWidget {
                   Tab(
                     child: Text(
                       'Расслабиться',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                  ),
-                  Tab(
-                    child: Text(
-                      'Работа',
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ),
@@ -82,9 +82,9 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   AllScreen(),
                   RainScreen(),
+                  SnowScreen(),
                   SllipScreen(),
                   RelaxScreen(),
-                  WorkScreen(),
                 ],
               ),
             ),

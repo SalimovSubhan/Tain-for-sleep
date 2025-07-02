@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rain_for_sleep/shared/shared_widgets/sound_card%20.dart';
 
-class WorkScreen extends HookConsumerWidget {
-  const WorkScreen({super.key});
+class SnowScreen extends HookConsumerWidget {
+  const SnowScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
