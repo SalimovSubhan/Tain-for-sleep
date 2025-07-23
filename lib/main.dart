@@ -1,18 +1,27 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'package:rain_for_sleep/router/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
+  await JustAudioBackground.init(
+    androidNotificationChannelId: 'com.subhon.rain',
+    androidNotificationChannelName: 'Audio Playback',
+    androidNotificationOngoing: true,
+    notificationColor: Colors.blue,
+    androidStopForegroundOnPause: true,
+  );
+
   runApp(
     EasyLocalization(
       path: 'assets/transitions',
-      supportedLocales: [Locale('an'), Locale('ru')],
-      fallbackLocale: Locale('ru'),
-      child: ProviderScope(child: const MyApp()),
+      supportedLocales: const [Locale('an'), Locale('ru')],
+      fallbackLocale: const Locale('ru'),
+      child: const ProviderScope(child: MyApp()),
     ),
   );
 }

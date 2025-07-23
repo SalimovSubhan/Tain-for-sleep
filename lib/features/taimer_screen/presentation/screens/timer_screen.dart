@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'package:rain_for_sleep/features/taimer_screen/presentation/providers/providers.dart';
 import 'package:rain_for_sleep/features/taimer_screen/presentation/widgets/castom_dialog_widget.dart';
 
@@ -23,7 +24,7 @@ class TimerScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final player = useMemoized(() => AudioPlayer());
-    final isPlyingNotifire = useMemoized(() => ValueNotifier<bool>(true));
+    final isPlyingNotifire = useState<bool>(true);
     final secondForText = useMemoized(() => ValueNotifier<String?>(null));
     final showCastomDialog = useState<bool>(false);
     final switchTimer = useState<int>(0);
@@ -50,6 +51,39 @@ class TimerScreen extends HookConsumerWidget {
     }
 
     useEffect(() {
+      final subscription = player.playerStateStream.listen((state) {
+        if (state.playing == false) {
+          isPlyingNotifire.value = false;
+          debugPrint("Пользователь нажал стоп/пауза из уведомления");
+        } else {
+          isPlyingNotifire.value = true;
+          debugPrint("Пользователь нажал play из уведомления");
+        }
+      });
+      return subscription.cancel;
+    }, []);
+
+    useEffect(() {
+      player
+          .setAudioSource(
+            AudioSource.asset(
+              sound,
+              tag: MediaItem(id: sound, title: title, artist: 'Rain for sleep'),
+            ),
+          )
+          .then((value) {
+            player.setLoopMode(LoopMode.one);
+            player.play();
+          });
+      // player.setAsset(sound).then((value) {
+      //   player.setLoopMode(LoopMode.one);
+      //   player.play();
+      // });
+
+      return player.dispose;
+    }, []);
+
+    useEffect(() {
       timer = Timer.periodic(const Duration(seconds: 1), (timer) {
         if (startSecond > 0) {
           startSecond--;
@@ -60,15 +94,6 @@ class TimerScreen extends HookConsumerWidget {
         timer?.cancel();
       };
     }, [switchTimer.value]);
-
-    useEffect(() {
-      player.setAsset(sound).then((value) {
-        player.setLoopMode(LoopMode.one);
-        player.play();
-      });
-
-      return player.dispose;
-    }, []);
 
     return PopScope(
       canPop: !showCastomDialog.value,
@@ -139,19 +164,20 @@ class TimerScreen extends HookConsumerWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 40),
                           child: ValueListenableBuilder(
                             valueListenable: isPlyingNotifire,
-                            builder: (context, isPlying, child) {
+                            builder: (context, isPlaying, child) {
                               return GestureDetector(
                                 onTap: () {
-                                  isPlyingNotifire.value = !isPlying;
-                                  isPlyingNotifire.value
-                                      ? player.play()
-                                      : player.stop();
+                                  if (isPlaying) {
+                                    player.pause();
+                                  } else {
+                                    player.play();
+                                  }
                                 },
                                 child: CircleAvatar(
                                   radius: 28,
                                   backgroundColor: Colors.white,
                                   child: Icon(
-                                    isPlying ? Icons.pause : Icons.play_arrow,
+                                    isPlaying ? Icons.pause : Icons.play_arrow,
                                   ),
                                 ),
                               );
