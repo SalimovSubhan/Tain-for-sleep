@@ -1,12 +1,11 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rain_for_sleep/features/taimer_screen/presentation/providers/providers.dart';
 import 'package:rain_for_sleep/features/taimer_screen/presentation/widgets/castom_dialog_widget.dart';
-import 'package:rain_for_sleep/main.dart';
+import 'package:rain_for_sleep/shared/shared_aplication/audio_handler_provider.dart';
 
 class TimerScreen extends HookConsumerWidget {
   final String title;
