@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:just_audio_background/just_audio_background.dart';
 import 'package:rain_for_sleep/features/taimer_screen/presentation/providers/providers.dart';
 import 'package:rain_for_sleep/features/taimer_screen/presentation/widgets/castom_dialog_widget.dart';
+import 'package:rain_for_sleep/main.dart';
 
 class TimerScreen extends HookConsumerWidget {
   final String title;
@@ -23,7 +22,6 @@ class TimerScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final player = useMemoized(() => AudioPlayer());
     final isPlyingNotifire = useState<bool>(true);
     final secondForText = useMemoized(() => ValueNotifier<String?>(null));
     final showCastomDialog = useState<bool>(false);
@@ -31,13 +29,14 @@ class TimerScreen extends HookConsumerWidget {
     final groupValueForCastomDialog = useState<int?>(null);
     var startSecond = switchTimer.value;
     Timer? timer;
+    final audioHandler = ref.watch(audioHandlerProvider);
 
     void formatTime({required int sec}) {
       final hour = sec ~/ 3600;
       final minute = (sec % 3600) ~/ 60;
       final sek = sec % 60;
       if (sec <= 0) {
-        player.stop();
+        audioHandler.stop();
         isPlyingNotifire.value = false;
         ref.read(secondprovider.notifier).state = 0;
         secondForText.value = null;
@@ -51,36 +50,13 @@ class TimerScreen extends HookConsumerWidget {
     }
 
     useEffect(() {
-      final subscription = player.playerStateStream.listen((state) {
-        if (state.playing == false) {
-          isPlyingNotifire.value = false;
-          debugPrint("Пользователь нажал стоп/пауза из уведомления");
-        } else {
-          isPlyingNotifire.value = true;
-          debugPrint("Пользователь нажал play из уведомления");
-        }
-      });
-      return subscription.cancel;
-    }, []);
-
-    useEffect(() {
-      player
-          .setAudioSource(
-            AudioSource.asset(
-              sound,
-              tag: MediaItem(id: sound, title: title, artist: 'Rain for sleep'),
-            ),
-          )
-          .then((value) {
-            player.setLoopMode(LoopMode.one);
-            player.play();
+      // загрузить аудио в audioHandler
+      audioHandler
+          .customAction('setSource', {'assetPath': sound, 'title': title})
+          .then((_) {
+            audioHandler.play();
           });
-      // player.setAsset(sound).then((value) {
-      //   player.setLoopMode(LoopMode.one);
-      //   player.play();
-      // });
-
-      return player.dispose;
+      return null;
     }, []);
 
     useEffect(() {
@@ -162,15 +138,16 @@ class TimerScreen extends HookConsumerWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 40),
-                          child: ValueListenableBuilder(
-                            valueListenable: isPlyingNotifire,
-                            builder: (context, isPlaying, child) {
+                          child: StreamBuilder(
+                            stream: audioHandler.playbackState,
+                            builder: (context, snapshot) {
+                              final isPlaying = snapshot.data?.playing ?? false;
                               return GestureDetector(
                                 onTap: () {
                                   if (isPlaying) {
-                                    player.pause();
+                                    audioHandler.pause();
                                   } else {
-                                    player.play();
+                                    audioHandler.play();
                                   }
                                 },
                                 child: CircleAvatar(

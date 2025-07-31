@@ -6,8 +6,8 @@ import 'package:rain_for_sleep/features/taimer_screen/presentation/screens/timer
 final router = GoRouter(
   initialLocation: '/',
   routes: [
-    GoRoute(path: '/', builder: (context, state) => SplashScreen()),
-    GoRoute(path: '/home', builder: (context, state) => HomeScreen()),
+    GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
+    GoRoute(path: '/home', builder: (context, state) => const HomeScreen()),
     GoRoute(
       path: '/timer_screen',
       builder: (context, state) {

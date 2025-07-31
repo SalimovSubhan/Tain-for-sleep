@@ -1,19 +1,22 @@
+import 'package:audio_service/audio_service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:just_audio_background/just_audio_background.dart';
+import 'package:rain_for_sleep/core/services/audio_handler.dart';
 import 'package:rain_for_sleep/router/router.dart';
+
+final audioHandlerProvider = Provider<AudioHandler>((ref) {
+  throw UnimplementedError();
+});
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
-  await JustAudioBackground.init(
-    androidNotificationChannelId: 'com.subhon.rain',
-    androidNotificationChannelName: 'Audio Playback',
-    androidNotificationOngoing: true,
-    notificationColor: Colors.blue,
-    androidStopForegroundOnPause: true,
+  final audioHandler = await initAudioService();
+
+  final container = ProviderContainer(
+    overrides: [audioHandlerProvider.overrideWithValue(audioHandler)],
   );
 
   runApp(
@@ -21,7 +24,10 @@ void main() async {
       path: 'assets/transitions',
       supportedLocales: const [Locale('an'), Locale('ru')],
       fallbackLocale: const Locale('ru'),
-      child: const ProviderScope(child: MyApp()),
+      child: UncontrolledProviderScope(
+        container: container,
+        child: const MyApp(),
+      ),
     ),
   );
 }
