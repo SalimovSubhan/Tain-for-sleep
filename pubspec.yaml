@@ -54,6 +54,7 @@ dependencies:
   just_audio: ^0.10.4
   audio_session: ^0.2.2
   audio_service: ^0.18.18
+  talker_flutter: ^4.9.3
 
 dev_dependencies:
   flutter_test:

@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rain_for_sleep/core/services/audio_handler.dart';
 import 'package:rain_for_sleep/router/router.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 final audioHandlerProvider = Provider<AudioHandler>((ref) {
   throw UnimplementedError();
 });
-
+// ignore: prefer_typing_uninitialized_variables
+late final talker;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
@@ -18,6 +20,8 @@ void main() async {
   final container = ProviderContainer(
     overrides: [audioHandlerProvider.overrideWithValue(audioHandler)],
   );
+
+  talker = TalkerFlutter.init();
 
   runApp(
     EasyLocalization(
