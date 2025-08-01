@@ -10,81 +10,78 @@ class RelaxScreen extends HookConsumerWidget {
     // ignore: prefer_const_constructors
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 42, 78, 162),
-      body: const Padding(
-        padding: EdgeInsets.all(10),
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SoundCard(
-                    title: 'дожд',
-                    image: 'assets/images/nature.avif',
-                    sound: 'assets/sounds/rain.mp3',
-                  ),
-                  SizedBox(width: 15),
-                  SoundCard(
-                    title: 'дожд',
-                    image: 'assets/images/nature.avif',
-                    sound: 'assets/sounds/rain.mp3',
-                  ),
-                ],
-              ),
-              SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SoundCard(
-                    title: 'дожд',
-                    image: 'assets/images/nature.avif',
-                    sound: 'assets/sounds/rain.mp3',
-                  ),
-                  SizedBox(width: 15),
-                  SoundCard(
-                    title: 'дожд',
-                    image: 'assets/images/nature.avif',
-                    sound: 'assets/sounds/rain.mp3',
-                  ),
-                ],
-              ),
-              SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SoundCard(
-                    title: 'дожд',
-                    image: 'assets/images/nature.avif',
-                    sound: 'assets/sounds/rain.mp3',
-                  ),
-                  SizedBox(width: 15),
-                  SoundCard(
-                    title: 'дожд',
-                    image: 'assets/images/nature.avif',
-                    sound: 'assets/sounds/rain.mp3',
-                  ),
-                ],
-              ),
-              SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SoundCard(
-                    title: 'дожд',
-                    image: 'assets/images/nature.avif',
-                    sound: 'assets/sounds/rain.mp3',
-                  ),
-                  SizedBox(width: 15),
-                  SoundCard(
-                    title: 'дожд',
-                    image: 'assets/images/nature.avif',
-                    sound: 'assets/sounds/rain.mp3',
-                  ),
-                ],
-              ),
-            ],
-          ),
+      body: const SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SoundCard(
+                  title: 'дожд',
+                  image: 'assets/images/nature.avif',
+                  sound: 'assets/sounds/rain.mp3',
+                ),
+                SizedBox(width: 15),
+                SoundCard(
+                  title: 'дожд',
+                  image: 'assets/images/nature.avif',
+                  sound: 'assets/sounds/rain.mp3',
+                ),
+              ],
+            ),
+            SizedBox(height: 15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SoundCard(
+                  title: 'дожд',
+                  image: 'assets/images/nature.avif',
+                  sound: 'assets/sounds/rain.mp3',
+                ),
+                SizedBox(width: 15),
+                SoundCard(
+                  title: 'дожд',
+                  image: 'assets/images/nature.avif',
+                  sound: 'assets/sounds/rain.mp3',
+                ),
+              ],
+            ),
+            SizedBox(height: 15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SoundCard(
+                  title: 'дожд',
+                  image: 'assets/images/nature.avif',
+                  sound: 'assets/sounds/rain.mp3',
+                ),
+                SizedBox(width: 15),
+                SoundCard(
+                  title: 'дожд',
+                  image: 'assets/images/nature.avif',
+                  sound: 'assets/sounds/rain.mp3',
+                ),
+              ],
+            ),
+            SizedBox(height: 15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SoundCard(
+                  title: 'дожд',
+                  image: 'assets/images/nature.avif',
+                  sound: 'assets/sounds/rain.mp3',
+                ),
+                SizedBox(width: 15),
+                SoundCard(
+                  title: 'дожд',
+                  image: 'assets/images/nature.avif',
+                  sound: 'assets/sounds/rain.mp3',
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
