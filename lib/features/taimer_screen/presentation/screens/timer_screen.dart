@@ -21,7 +21,6 @@ class TimerScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isPlyingNotifire = useState<bool>(true);
     final secondForText = useMemoized(() => ValueNotifier<String?>(null));
     final showCastomDialog = useState<bool>(false);
     final switchTimer = useState<int>(0);
@@ -36,7 +35,6 @@ class TimerScreen extends HookConsumerWidget {
       final sek = sec % 60;
       if (sec <= 0) {
         audioHandler.stop();
-        isPlyingNotifire.value = false;
         ref.read(secondprovider.notifier).state = 0;
         secondForText.value = null;
       } else if (hour > 0) {
@@ -49,7 +47,6 @@ class TimerScreen extends HookConsumerWidget {
     }
 
     useEffect(() {
-      // загрузить аудио в audioHandler
       audioHandler
           .customAction('setSource', {'assetPath': sound, 'title': title})
           .then((_) {
@@ -73,7 +70,11 @@ class TimerScreen extends HookConsumerWidget {
     return PopScope(
       canPop: !showCastomDialog.value,
       onPopInvokedWithResult: (didPop, result) {
-        showCastomDialog.value = false;
+        if (showCastomDialog.value) {
+          showCastomDialog.value = false;
+        } else {
+          audioHandler.stop();
+        }
       },
       child: Scaffold(
         backgroundColor: const Color.fromARGB(149, 119, 195, 122),
@@ -95,6 +96,7 @@ class TimerScreen extends HookConsumerWidget {
                           GestureDetector(
                             onTap: () {
                               context.pop();
+                              audioHandler.stop();
                             },
                             child: const Icon(Icons.close, color: Colors.white),
                           ),
