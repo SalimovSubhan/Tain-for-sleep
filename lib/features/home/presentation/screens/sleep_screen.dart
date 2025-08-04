@@ -18,13 +18,13 @@ class SllipScreen extends HookConsumerWidget {
               children: [
                 SoundCard(
                   title: 'дожд',
-                  image: 'assets/images/nature.avif',
+                  image: 'assets/images/sleep/sleep1.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
                   title: 'дожд',
-                  image: 'assets/images/nature.avif',
+                  image: 'assets/images/sleep/sleep2.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
               ],
@@ -35,13 +35,13 @@ class SllipScreen extends HookConsumerWidget {
               children: [
                 SoundCard(
                   title: 'дожд',
-                  image: 'assets/images/nature.avif',
+                  image: 'assets/images/sleep/sleep3.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
                   title: 'дожд',
-                  image: 'assets/images/nature.avif',
+                  image: 'assets/images/sleep/sleep4.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
               ],

@@ -3,7 +3,7 @@ import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:rain_for_sleep/features/home/presentation/screens/all_screen.dart';
 import 'package:rain_for_sleep/features/home/presentation/screens/rain_screen.dart';
 import 'package:rain_for_sleep/features/home/presentation/screens/relax_screen.dart';
-import 'package:rain_for_sleep/features/home/presentation/screens/sllip_screen.dart';
+import 'package:rain_for_sleep/features/home/presentation/screens/sleep_screen.dart';
 import 'package:rain_for_sleep/features/home/presentation/screens/snow_screen.dart';
 
 class HomeScreen extends StatelessWidget {
