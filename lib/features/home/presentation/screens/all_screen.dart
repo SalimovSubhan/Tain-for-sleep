@@ -36,13 +36,13 @@ class AllScreen extends HookConsumerWidget {
               children: [
                 SoundCard(
                   title: 'дожд',
-                  image: 'assets/images/snow/snow_2.png',
+                  image: 'assets/images/rain/rain_2.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
                   title: 'дожд',
-                  image: 'assets/images/rain/rain_2.png',
+                  image: 'assets/images/rain/rain_6.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
               ],

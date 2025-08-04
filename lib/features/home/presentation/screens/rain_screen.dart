@@ -18,7 +18,7 @@ class RainScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'Тропический дождь',
+                  title: 'Дождь в окно',
                   image: 'assets/images/rain/rain_1.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
