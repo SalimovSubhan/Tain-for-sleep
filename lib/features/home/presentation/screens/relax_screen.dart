@@ -19,13 +19,13 @@ class RelaxScreen extends HookConsumerWidget {
               children: [
                 SoundCard(
                   title: 'дожд',
-                  image: 'assets/images/nature.avif',
+                  image: 'assets/images/relax/relax1.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
-                  title: 'дожд',
-                  image: 'assets/images/nature.avif',
+                  title: 'Пляж',
+                  image: 'assets/images/relax/relax2.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
               ],
@@ -36,13 +36,13 @@ class RelaxScreen extends HookConsumerWidget {
               children: [
                 SoundCard(
                   title: 'дожд',
-                  image: 'assets/images/nature.avif',
+                  image: 'assets/images/relax/relax3.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
                   title: 'дожд',
-                  image: 'assets/images/nature.avif',
+                  image: 'assets/images/relax/relax4.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
               ],
@@ -53,34 +53,18 @@ class RelaxScreen extends HookConsumerWidget {
               children: [
                 SoundCard(
                   title: 'дожд',
-                  image: 'assets/images/nature.avif',
+                  image: 'assets/images/relax/relax5.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
                   title: 'дожд',
-                  image: 'assets/images/nature.avif',
+                  image: 'assets/images/relax/relax6.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
               ],
             ),
             SizedBox(height: 15),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SoundCard(
-                  title: 'дожд',
-                  image: 'assets/images/nature.avif',
-                  sound: 'assets/sounds/rain.mp3',
-                ),
-                SizedBox(width: 15),
-                SoundCard(
-                  title: 'дожд',
-                  image: 'assets/images/nature.avif',
-                  sound: 'assets/sounds/rain.mp3',
-                ),
-              ],
-            ),
           ],
         ),
       ),

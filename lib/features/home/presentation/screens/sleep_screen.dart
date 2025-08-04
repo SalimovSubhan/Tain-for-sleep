@@ -47,39 +47,6 @@ class SllipScreen extends HookConsumerWidget {
               ],
             ),
             SizedBox(height: 15),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SoundCard(
-                  title: 'дожд',
-                  image: 'assets/images/nature.avif',
-                  sound: 'assets/sounds/rain.mp3',
-                ),
-                SizedBox(width: 15),
-                SoundCard(
-                  title: 'дожд',
-                  image: 'assets/images/nature.avif',
-                  sound: 'assets/sounds/rain.mp3',
-                ),
-              ],
-            ),
-            SizedBox(height: 15),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SoundCard(
-                  title: 'дожд',
-                  image: 'assets/images/nature.avif',
-                  sound: 'assets/sounds/rain.mp3',
-                ),
-                SizedBox(width: 15),
-                SoundCard(
-                  title: 'дожд',
-                  image: 'assets/images/nature.avif',
-                  sound: 'assets/sounds/rain.mp3',
-                ),
-              ],
-            ),
           ],
         ),
       ),
