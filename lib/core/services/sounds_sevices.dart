@@ -50,32 +50,27 @@ class SoundsSevices {
     SoundCardDto(
       sound: 'assets/sounds/rain.mp3',
       image: 'assets/images/snow/snow_1.png',
-      title: 'Тишина в метели',
+      title: 'Зимняя тишина в лесу',
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain.mp3',
       image: 'assets/images/snow/snow_2.png',
-      title: 'Зимняя улица',
+      title: 'Дом в заснеженной ночи',
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain.mp3',
       image: 'assets/images/snow/snow_3.png',
-      title: 'Вьюга',
+      title: 'Снежная буря среди елей',
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain.mp3',
       image: 'assets/images/snow/snow_4.png',
-      title: 'Снег в лесу',
+      title: 'Буря',
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain.mp3',
       image: 'assets/images/snow/snow_5.png',
-      title: 'Ночной снег',
-    ),
-    SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
-      image: 'assets/images/snow/snow_6.png',
-      title: 'Снегопад',
+      title: 'Прогулка в метельной вечери',
     ),
   ];
 

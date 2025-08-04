@@ -21,11 +21,7 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(left: 15),
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    // Color.fromARGB(255, 19, 137, 234),
-                    Color(0xFF0E2A6C),
-                    Color.fromARGB(255, 2, 65, 116),
-                  ],
+                  colors: [Color(0xFF0E2A6C), Color.fromARGB(255, 2, 65, 116)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -105,10 +101,10 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            // ignore: prefer_const_constructors
-            Expanded(
-              child: const TabBarView(
+            const Expanded(
+              child: TabBarView(
                 children: [
+                  //all
                   AllScreen(),
                   //rain
                   SoundsScreen(soundCards: SoundsSevices.rainSoundCards),

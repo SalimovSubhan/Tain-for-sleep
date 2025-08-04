@@ -31,8 +31,8 @@ class SoundCardWidget extends StatelessWidget {
         child: Container(
           width: double.infinity,
           height: 40,
-          // padding: EdgeInsets.only(left: 10),
           alignment: Alignment.center,
+          padding: const EdgeInsets.symmetric(horizontal: 2),
           decoration: BoxDecoration(
             color: Colors.black.withAlpha(108),
             borderRadius: const BorderRadius.only(
@@ -40,7 +40,11 @@ class SoundCardWidget extends StatelessWidget {
               bottomRight: Radius.circular(20),
             ),
           ),
-          child: Text(title, style: const TextStyle(color: Colors.white)),
+          child: Text(
+            title,
+            style: const TextStyle(color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );

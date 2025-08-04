@@ -14,7 +14,10 @@ class SoundsScreen extends HookConsumerWidget {
       body: Padding(
         padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
         child: GridView.builder(
-          padding: EdgeInsets.zero,
+          physics: const AlwaysScrollableScrollPhysics(
+            parent: BouncingScrollPhysics(),
+          ),
+          padding: const EdgeInsets.only(bottom: 15),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 15,
