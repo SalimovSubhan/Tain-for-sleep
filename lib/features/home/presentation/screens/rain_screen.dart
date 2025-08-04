@@ -18,13 +18,13 @@ class RainScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Тропический дождь',
                   image: 'assets/images/rain/rain_1.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Утренний дождь',
                   image: 'assets/images/rain/rain_2.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
@@ -35,13 +35,13 @@ class RainScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Зонтик и дождь',
                   image: 'assets/images/rain/rain_3.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Дождь по крыше',
                   image: 'assets/images/rain/rain_4.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
@@ -52,13 +52,13 @@ class RainScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Ливень на крыше',
                   image: 'assets/images/rain/rain_5.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Лёгкий дождь',
                   image: 'assets/images/rain/rain_6.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
@@ -69,13 +69,13 @@ class RainScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Ливень на деревьях',
                   image: 'assets/images/rain/rain_7.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Трасса в дожде',
                   image: 'assets/images/rain/rain_8.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),

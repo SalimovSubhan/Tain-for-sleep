@@ -26,7 +26,6 @@ class SoundCard extends StatelessWidget {
           height: 170,
           decoration: BoxDecoration(
             image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
-            color: Colors.amber,
             borderRadius: BorderRadius.circular(20),
           ),
           alignment: Alignment.bottomCenter,

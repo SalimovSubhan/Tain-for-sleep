@@ -17,13 +17,13 @@ class SllipScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Пляж вечером',
                   image: 'assets/images/sleep/sleep1.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Треск костра',
                   image: 'assets/images/sleep/sleep2.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
@@ -34,13 +34,13 @@ class SllipScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'дожд',
+                  title: 'В самолёта',
                   image: 'assets/images/sleep/sleep3.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Лунный свет',
                   image: 'assets/images/sleep/sleep4.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),

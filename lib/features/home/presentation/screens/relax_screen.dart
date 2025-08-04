@@ -18,7 +18,7 @@ class RelaxScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Камин',
                   image: 'assets/images/relax/relax1.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
@@ -35,13 +35,13 @@ class RelaxScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Лесное озеро',
                   image: 'assets/images/relax/relax3.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Тихий ручей',
                   image: 'assets/images/relax/relax4.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
@@ -52,13 +52,13 @@ class RelaxScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Океан',
                   image: 'assets/images/relax/relax5.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Песок под ногами',
                   image: 'assets/images/relax/relax6.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),

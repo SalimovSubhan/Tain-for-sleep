@@ -17,13 +17,13 @@ class SnowScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Тишина в метели',
                   image: 'assets/images/snow/snow_1.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Зимняя улица',
                   image: 'assets/images/snow/snow_2.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
@@ -34,13 +34,13 @@ class SnowScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Вьюга',
                   image: 'assets/images/snow/snow_3.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Снег на лесу',
                   image: 'assets/images/snow/snow_4.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
@@ -51,13 +51,13 @@ class SnowScreen extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Ночной снег',
                   image: 'assets/images/snow/snow_5.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
                 SizedBox(width: 15),
                 SoundCard(
-                  title: 'дожд',
+                  title: 'Снегопад',
                   image: 'assets/images/snow/snow_6.png',
                   sound: 'assets/sounds/rain.mp3',
                 ),
