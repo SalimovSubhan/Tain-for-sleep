@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
+import 'package:rain_for_sleep/core/services/sounds_sevices.dart';
 import 'package:rain_for_sleep/features/home/presentation/screens/all_screen.dart';
-import 'package:rain_for_sleep/features/home/presentation/screens/rain_screen.dart';
-import 'package:rain_for_sleep/features/home/presentation/screens/relax_screen.dart';
-import 'package:rain_for_sleep/features/home/presentation/screens/sleep_screen.dart';
-import 'package:rain_for_sleep/features/home/presentation/screens/snow_screen.dart';
+import 'package:rain_for_sleep/shared/shared_widgets/sounds_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -109,17 +107,18 @@ class HomeScreen extends StatelessWidget {
             ),
             // ignore: prefer_const_constructors
             Expanded(
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                child: TabBarView(
-                  children: [
-                    AllScreen(),
-                    RainScreen(),
-                    SnowScreen(),
-                    SllipScreen(),
-                    RelaxScreen(),
-                  ],
-                ),
+              child: const TabBarView(
+                children: [
+                  AllScreen(),
+                  //rain
+                  SoundsScreen(soundCards: SoundsSevices.rainSoundCards),
+                  //snow
+                  SoundsScreen(soundCards: SoundsSevices.snowSoundCards),
+                  //sleep
+                  SoundsScreen(soundCards: SoundsSevices.sleepSoundCards),
+                  //relax
+                  SoundsScreen(soundCards: SoundsSevices.relaxSoundCards),
+                ],
               ),
             ),
           ],

@@ -1,0 +1,139 @@
+import 'package:rain_for_sleep/shared/shared_data/sound_card_dto.dart';
+
+class SoundsSevices {
+  //rain
+  static const List<SoundCardDto> rainSoundCards = [
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/rain/rain_1.png',
+      title: 'Дождь в окно',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/rain/rain_2.png',
+      title: 'Утренний дождь',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/rain/rain_3.png',
+      title: 'Зонтик и дождь',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/rain/rain_4.png',
+      title: 'Дождь по крыше',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/rain/rain_5.png',
+      title: 'Ливень на листьях',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/rain/rain_6.png',
+      title: 'Лёгкий дождь',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/rain/rain_7.png',
+      title: 'Ливень на тротуаре',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/rain/rain_8.png',
+      title: 'Дом под дождём',
+    ),
+  ];
+
+  //snow
+  static const List<SoundCardDto> snowSoundCards = [
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/snow/snow_1.png',
+      title: 'Тишина в метели',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/snow/snow_2.png',
+      title: 'Зимняя улица',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/snow/snow_3.png',
+      title: 'Вьюга',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/snow/snow_4.png',
+      title: 'Снег в лесу',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/snow/snow_5.png',
+      title: 'Ночной снег',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/snow/snow_6.png',
+      title: 'Снегопад',
+    ),
+  ];
+
+  //sleep
+  static const List<SoundCardDto> sleepSoundCards = [
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/sleep/sleep1.png',
+      title: 'Пляж вечером',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/sleep/sleep2.png',
+      title: 'Треск костра',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/sleep/sleep3.png',
+      title: 'В самолёта',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/sleep/sleep4.png',
+      title: 'Лунный свет',
+    ),
+  ];
+
+  //relax
+  static const List<SoundCardDto> relaxSoundCards = [
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/relax/relax1.png',
+      title: 'Камин',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/relax/relax2.png',
+      title: 'Пляж',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/relax/relax3.png',
+      title: 'Лесное озеро',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/relax/relax4.png',
+      title: 'Тихий ручей',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/relax/relax5.png',
+      title: 'Океан',
+    ),
+    SoundCardDto(
+      sound: 'assets/sounds/rain.mp3',
+      image: 'assets/images/relax/relax6.png',
+      title: 'Песок под ногами',
+    ),
+  ];
+}

@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:rain_for_sleep/features/home/presentation/home_screen.dart';
+import 'package:rain_for_sleep/features/home/presentation/screens/home_screen.dart';
 import 'package:rain_for_sleep/features/splash_screen.dart';
 import 'package:rain_for_sleep/features/taimer_screen/presentation/screens/timer_screen.dart';
 import 'package:rain_for_sleep/shared/shared_aplication/talker_provider.dart';
