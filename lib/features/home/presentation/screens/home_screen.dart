@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:rain_for_sleep/core/services/sounds_sevices.dart';
-import 'package:rain_for_sleep/features/home/presentation/screens/all_screen.dart';
 import 'package:rain_for_sleep/shared/shared_widgets/sounds_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -105,7 +104,7 @@ class HomeScreen extends StatelessWidget {
               child: TabBarView(
                 children: [
                   //all
-                  AllScreen(),
+                  SoundsScreen(soundCards: SoundsSevices.allSoundCards),
                   //rain
                   SoundsScreen(soundCards: SoundsSevices.rainSoundCards),
                   //snow
