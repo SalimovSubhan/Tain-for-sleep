@@ -4,7 +4,7 @@ class SoundsSevices {
   //all
   static const List<SoundCardDto> allSoundCards = [
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/relax/beach.mp3',
       image: 'assets/images/relax/relax2.png',
       title: 'Пляж',
     ),
@@ -24,7 +24,7 @@ class SoundsSevices {
       title: 'Утренний дождь',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/relax/fireplace.mp3',
       image: 'assets/images/relax/relax1.png',
       title: 'Камин',
     ),
@@ -39,7 +39,7 @@ class SoundsSevices {
       title: 'Дождь по зонтику',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/relax/walking.mp3',
       image: 'assets/images/relax/relax6.png',
       title: 'Песок под ногами',
     ),
@@ -64,12 +64,12 @@ class SoundsSevices {
       title: 'Лёгкий дождь',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/relax/forestbirds.mp3',
       image: 'assets/images/relax/relax3.png',
       title: 'Лесное озеро',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/relax/water_small_stream.mp3',
       image: 'assets/images/relax/relax4.png',
       title: 'Тихий ручей',
     ),
@@ -89,7 +89,7 @@ class SoundsSevices {
       title: 'Пляж вечером',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/relax/ocean.mp3',
       image: 'assets/images/relax/relax5.png',
       title: 'Океан',
     ),
@@ -220,32 +220,32 @@ class SoundsSevices {
   //relax
   static const List<SoundCardDto> relaxSoundCards = [
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/relax/fireplace.mp3',
       image: 'assets/images/relax/relax1.png',
       title: 'Камин',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/relax/beach.mp3',
       image: 'assets/images/relax/relax2.png',
       title: 'Пляж',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/relax/forestbirds.mp3',
       image: 'assets/images/relax/relax3.png',
       title: 'Лесное озеро',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/relax/water_small_stream.mp3',
       image: 'assets/images/relax/relax4.png',
       title: 'Тихий ручей',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/relax/ocean.mp3',
       image: 'assets/images/relax/relax5.png',
       title: 'Океан',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/relax/walking.mp3',
       image: 'assets/images/relax/relax6.png',
       title: 'Песок под ногами',
     ),
