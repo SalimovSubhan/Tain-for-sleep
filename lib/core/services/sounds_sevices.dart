@@ -14,12 +14,12 @@ class SoundsSevices {
       title: 'Треск костра',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/rain_on_window.mp3',
       image: 'assets/images/rain/rain_1.png',
       title: 'Дождь в окно',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/morning_rain.mp3',
       image: 'assets/images/rain/rain_2.png',
       title: 'Утренний дождь',
     ),
@@ -34,7 +34,7 @@ class SoundsSevices {
       title: 'Зимняя тишина в лесу',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/rain_on_the_umbrela.mp3',
       image: 'assets/images/rain/rain_3.png',
       title: 'Дождь по зонтику',
     ),
@@ -49,17 +49,17 @@ class SoundsSevices {
       title: 'Дом в заснеженной ночи',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/rain_on_the_roof.mp3',
       image: 'assets/images/rain/rain_4.png',
       title: 'Дождь по крыше',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/rain_on_leaves.mp3',
       image: 'assets/images/rain/rain_5.png',
       title: 'Ливень на листьях',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/gentle_rain.mp3',
       image: 'assets/images/rain/rain_6.png',
       title: 'Лёгкий дождь',
     ),
@@ -74,7 +74,7 @@ class SoundsSevices {
       title: 'Тихий ручей',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/rain_on_the_tent.mp3',
       image: 'assets/images/rain/rain_7.png',
       title: 'Дождь по палатке',
     ),
@@ -109,7 +109,7 @@ class SoundsSevices {
       title: 'Снежная буря среди елей',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/rain_on_the_home.mp3',
       image: 'assets/images/rain/rain_8.png',
       title: 'Дом под дождём',
     ),
@@ -123,42 +123,42 @@ class SoundsSevices {
   //rain
   static const List<SoundCardDto> rainSoundCards = [
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/rain_on_window.mp3',
       image: 'assets/images/rain/rain_1.png',
       title: 'Дождь в окно',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/morning_rain.mp3',
       image: 'assets/images/rain/rain_2.png',
       title: 'Утренний дождь',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/rain_on_the_umbrela.mp3',
       image: 'assets/images/rain/rain_3.png',
       title: 'Дождь по зонтику',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/rain_on_the_roof.mp3',
       image: 'assets/images/rain/rain_4.png',
       title: 'Дождь по крыше',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/rain_on_leaves.mp3',
       image: 'assets/images/rain/rain_5.png',
       title: 'Ливень на листьях',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/gentle_rain.mp3',
       image: 'assets/images/rain/rain_6.png',
       title: 'Лёгкий дождь',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/rain_on_the_tent.mp3',
       image: 'assets/images/rain/rain_7.png',
       title: 'Дождь по палатке',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/rain/rain_on_the_home.mp3',
       image: 'assets/images/rain/rain_8.png',
       title: 'Дом под дождём',
     ),
