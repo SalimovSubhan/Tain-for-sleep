@@ -29,7 +29,7 @@ class SoundsSevices {
       title: 'Камин',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/snow/winter_forest_silence.mp3',
       image: 'assets/images/snow/snow_1.png',
       title: 'Зимняя тишина в лесу',
     ),
@@ -44,7 +44,7 @@ class SoundsSevices {
       title: 'Песок под ногами',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/snow/snow_house.mp3',
       image: 'assets/images/snow/snow_2.png',
       title: 'Дом в заснеженной ночи',
     ),
@@ -99,12 +99,12 @@ class SoundsSevices {
       title: 'Лунный свет',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/snow/snow_storm.wav',
       image: 'assets/images/snow/snow_4.png',
       title: 'Буря',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/snow/snowstorm_among_firs.mp3',
       image: 'assets/images/snow/snow_3.png',
       title: 'Снежная буря среди елей',
     ),
@@ -114,7 +114,7 @@ class SoundsSevices {
       title: 'Дом под дождём',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/snow/walk_on_snow.mp3',
       image: 'assets/images/snow/snow_5.png',
       title: 'Прогулка в метельной вечери',
     ),
@@ -167,27 +167,27 @@ class SoundsSevices {
   //snow
   static const List<SoundCardDto> snowSoundCards = [
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/snow/winter_forest_silence.mp3',
       image: 'assets/images/snow/snow_1.png',
       title: 'Зимняя тишина в лесу',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/snow/snow_house.mp3',
       image: 'assets/images/snow/snow_2.png',
       title: 'Дом в заснеженной ночи',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/snow/snowstorm_among_firs.mp3',
       image: 'assets/images/snow/snow_3.png',
       title: 'Снежная буря среди елей',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/snow/snow_storm.wav',
       image: 'assets/images/snow/snow_4.png',
       title: 'Буря',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/snow/walk_on_snow.mp3',
       image: 'assets/images/snow/snow_5.png',
       title: 'Прогулка в метельной вечери',
     ),
