@@ -83,6 +83,8 @@ flutter:
     - assets/images/
     - assets/sounds/
     - assets/sounds/rain/
+    - assets/sounds/snow/
+    - assets/sounds/sleep/
     - assets/images/rain/
     - assets/images/snow/
     - assets/images/sleep/

@@ -9,7 +9,7 @@ class SoundsSevices {
       title: 'Пляж',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/sleep/fire.mp3',
       image: 'assets/images/sleep/sleep2.png',
       title: 'Треск костра',
     ),
@@ -29,7 +29,7 @@ class SoundsSevices {
       title: 'Камин',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/snow/winter_forest_silence.mp3',
+      sound: 'assets/sounds/snow/winter_forest.mp3',
       image: 'assets/images/snow/snow_1.png',
       title: 'Зимняя тишина в лесу',
     ),
@@ -79,12 +79,12 @@ class SoundsSevices {
       title: 'Дождь по палатке',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/sleep/airplane.mp3',
       image: 'assets/images/sleep/sleep3.png',
       title: 'В самолёта',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/sleep/beach.mp3',
       image: 'assets/images/sleep/sleep1.png',
       title: 'Пляж вечером',
     ),
@@ -94,7 +94,7 @@ class SoundsSevices {
       title: 'Океан',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/sleep/night_shore.mp3',
       image: 'assets/images/sleep/sleep4.png',
       title: 'Лунный свет',
     ),
@@ -167,7 +167,7 @@ class SoundsSevices {
   //snow
   static const List<SoundCardDto> snowSoundCards = [
     SoundCardDto(
-      sound: 'assets/sounds/snow/winter_forest_silence.mp3',
+      sound: 'assets/sounds/snow/winter_forest.mp3',
       image: 'assets/images/snow/snow_1.png',
       title: 'Зимняя тишина в лесу',
     ),
@@ -196,22 +196,22 @@ class SoundsSevices {
   //sleep
   static const List<SoundCardDto> sleepSoundCards = [
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/sleep/beach.mp3',
       image: 'assets/images/sleep/sleep1.png',
       title: 'Пляж вечером',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/sleep/fire.mp3',
       image: 'assets/images/sleep/sleep2.png',
       title: 'Треск костра',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/sleep/airplane.mp3',
       image: 'assets/images/sleep/sleep3.png',
       title: 'В самолёта',
     ),
     SoundCardDto(
-      sound: 'assets/sounds/rain.mp3',
+      sound: 'assets/sounds/sleep/night_shore.mp3',
       image: 'assets/images/sleep/sleep4.png',
       title: 'Лунный свет',
     ),
