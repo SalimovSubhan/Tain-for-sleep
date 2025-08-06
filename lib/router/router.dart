@@ -24,8 +24,14 @@ final router = GoRouter(
         final title = extra['title'];
         final image = extra['image'];
         final sound = extra['sound'];
+        final gradient = extra['gradient'];
         return CustomTransitionPage(
-          child: TimerScreen(image: image, title: title, sound: sound),
+          child: TimerScreen(
+            image: image,
+            title: title,
+            sound: sound,
+            gradient: gradient,
+          ),
           transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             final tween = Tween(

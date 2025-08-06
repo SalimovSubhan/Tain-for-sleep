@@ -5,11 +5,13 @@ class SoundCardWidget extends StatelessWidget {
   final String title;
   final String image;
   final String sound;
+  final Gradient? gradient;
   const SoundCardWidget({
     super.key,
     required this.title,
     required this.image,
     required this.sound,
+    this.gradient,
   });
 
   @override
@@ -18,7 +20,12 @@ class SoundCardWidget extends StatelessWidget {
       onTap: () {
         context.push(
           '/timer_screen',
-          extra: {'image': image, 'title': title, 'sound': sound},
+          extra: {
+            'image': image,
+            'title': title,
+            'sound': sound,
+            'gradient': gradient,
+          },
         );
       },
       child: Container(
