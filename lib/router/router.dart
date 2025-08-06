@@ -11,7 +11,12 @@ final router = GoRouter(
   observers: [TalkerRouteObserver(talker)],
   routes: [
     GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
-    GoRoute(path: '/home', builder: (context, state) => const HomeScreen()),
+    GoRoute(
+      path: '/home',
+      pageBuilder: (context, state) {
+        return const NoTransitionPage(child: HomeScreen());
+      },
+    ),
     GoRoute(
       path: '/timer_screen',
       pageBuilder: (context, state) {
