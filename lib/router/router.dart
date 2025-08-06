@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rain_for_sleep/features/home/presentation/screens/home_screen.dart';
 import 'package:rain_for_sleep/features/splash_screen.dart';
@@ -13,12 +14,25 @@ final router = GoRouter(
     GoRoute(path: '/home', builder: (context, state) => const HomeScreen()),
     GoRoute(
       path: '/timer_screen',
-      builder: (context, state) {
+      pageBuilder: (context, state) {
         final extra = state.extra as Map<String, dynamic>;
         final title = extra['title'];
         final image = extra['image'];
         final sound = extra['sound'];
-        return TimerScreen(image: image, title: title, sound: sound);
+        return CustomTransitionPage(
+          child: TimerScreen(image: image, title: title, sound: sound),
+          transitionDuration: const Duration(milliseconds: 500),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            final tween = Tween(
+              begin: const Offset(1.0, 0.0),
+              end: Offset.zero,
+            ).chain(CurveTween(curve: Curves.ease));
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+          },
+        );
       },
     ),
   ],

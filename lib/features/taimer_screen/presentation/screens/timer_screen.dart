@@ -77,7 +77,7 @@ class TimerScreen extends HookConsumerWidget {
         }
       },
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(149, 119, 195, 122),
+        backgroundColor: const Color.fromARGB(255, 112, 208, 115),
         body: Stack(
           children: [
             SafeArea(
