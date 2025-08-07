@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:rain_for_sleep/features/taimer_screen/presentation/widgets/radio_with_text_widget.dart';
+import 'package:rain_for_sleep/features/sleep_sound/presentation/widgets/radio_with_text_widget.dart';
 
 class CastomDialogWidget extends HookConsumerWidget {
   final ValueNotifier<int> switchTimer;

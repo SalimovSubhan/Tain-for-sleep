@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rain_for_sleep/features/home/presentation/screens/home_screen.dart';
 import 'package:rain_for_sleep/features/splash_screen.dart';
-import 'package:rain_for_sleep/features/taimer_screen/presentation/screens/timer_screen.dart';
+import 'package:rain_for_sleep/features/sleep_sound/presentation/screens/sleep_sound_screen.dart';
 import 'package:rain_for_sleep/shared/shared_aplication/talker_provider.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
@@ -26,7 +26,7 @@ final router = GoRouter(
         final sound = extra['sound'];
         final gradient = extra['gradient'];
         return CustomTransitionPage(
-          child: TimerScreen(
+          child: SleepSoundScreen(
             image: image,
             title: title,
             sound: sound,

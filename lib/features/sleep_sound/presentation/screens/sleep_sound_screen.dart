@@ -4,17 +4,17 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_volume_controller/flutter_volume_controller.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:rain_for_sleep/features/taimer_screen/presentation/providers/providers.dart';
-import 'package:rain_for_sleep/features/taimer_screen/presentation/widgets/castom_dialog_widget.dart';
+import 'package:rain_for_sleep/features/sleep_sound/presentation/providers/providers.dart';
+import 'package:rain_for_sleep/features/sleep_sound/presentation/widgets/castom_dialog_widget.dart';
 import 'package:rain_for_sleep/shared/shared_aplication/audio_handler_provider.dart';
 
-class TimerScreen extends HookConsumerWidget {
+class SleepSoundScreen extends HookConsumerWidget {
   final String title;
   final String image;
   final String sound;
   final Gradient? gradient;
 
-  const TimerScreen({
+  const SleepSoundScreen({
     super.key,
     required this.image,
     required this.title,
@@ -67,6 +67,9 @@ class TimerScreen extends HookConsumerWidget {
         if (startSecond > 0) {
           startSecond--;
           formatTime(sec: startSecond);
+        } else {
+          secondForText.value = null;
+          timer.cancel();
         }
       });
       return () {
@@ -99,7 +102,6 @@ class TimerScreen extends HookConsumerWidget {
                           vertical: 30,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             GestureDetector(
                               onTap: () {
@@ -111,6 +113,9 @@ class TimerScreen extends HookConsumerWidget {
                                 color: Colors.white,
                               ),
                             ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.23,
+                            ),
                             Text(
                               title,
                               style: const TextStyle(
@@ -118,10 +123,6 @@ class TimerScreen extends HookConsumerWidget {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 17,
                               ),
-                            ),
-                            const Icon(
-                              Icons.add_circle_outline_sharp,
-                              color: Colors.white,
                             ),
                           ],
                         ),
@@ -138,7 +139,33 @@ class TimerScreen extends HookConsumerWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                      const SizedBox(height: 70),
+                      const SizedBox(height: 30),
+                      GestureDetector(
+                        onTap: () {
+                          showCastomDialog.value = true;
+                        },
+                        child: const Icon(
+                          Icons.timer_sharp,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      ValueListenableBuilder(
+                        valueListenable: secondForText,
+                        builder: (context, value, child) {
+                          return value != null
+                              ? Text(
+                                value,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              )
+                              : const SizedBox.shrink();
+                        },
+                      ),
+                      const SizedBox(height: 10),
                       Slider(
                         padding: const EdgeInsets.symmetric(horizontal: 30),
                         value: volume.value ?? 0.0,
@@ -155,11 +182,6 @@ class TimerScreen extends HookConsumerWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(
-                            Icons.add_circle_outline,
-                            color: Colors.white,
-                            size: 30,
-                          ),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 40),
                             child: StreamBuilder(
@@ -188,37 +210,9 @@ class TimerScreen extends HookConsumerWidget {
                               },
                             ),
                           ),
-                          Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  showCastomDialog.value = true;
-                                },
-                                child: const Icon(
-                                  Icons.timer_sharp,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                              ),
-                            ],
-                          ),
                         ],
                       ),
                       const SizedBox(height: 10),
-                      ValueListenableBuilder(
-                        valueListenable: secondForText,
-                        builder: (context, value, child) {
-                          return value != null
-                              ? Text(
-                                value,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                ),
-                              )
-                              : const SizedBox.shrink();
-                        },
-                      ),
                     ],
                   ),
                 ),
