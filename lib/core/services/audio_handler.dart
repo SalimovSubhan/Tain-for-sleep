@@ -86,6 +86,7 @@ class MyAudioHandler extends BaseAudioHandler with SeekHandler {
           ),
         );
         await _player.setAudioSource(AudioSource.asset(assetPath));
+        await _player.setVolume(1);
         await _player.setLoopMode(LoopMode.one);
         break;
     }

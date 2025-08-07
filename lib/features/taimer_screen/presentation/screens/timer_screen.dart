@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_volume_controller/flutter_volume_controller.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rain_for_sleep/features/taimer_screen/presentation/providers/providers.dart';
@@ -27,6 +28,7 @@ class TimerScreen extends HookConsumerWidget {
     final showCastomDialog = useState<bool>(false);
     final switchTimer = useState<int>(0);
     final groupValueForCastomDialog = useState<int?>(null);
+    final volume = useState<double?>(0.0);
     var startSecond = switchTimer.value;
     Timer? timer;
     final audioHandler = ref.watch(audioHandlerProvider);
@@ -49,6 +51,9 @@ class TimerScreen extends HookConsumerWidget {
     }
 
     useEffect(() {
+      FlutterVolumeController.addListener((value) {
+        volume.value = value;
+      });
       audioHandler
           .customAction('setSource', {'assetPath': sound, 'title': title})
           .then((_) {
@@ -133,8 +138,20 @@ class TimerScreen extends HookConsumerWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-
                       const SizedBox(height: 70),
+                      Slider(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        value: volume.value ?? 0.0,
+                        min: 0.0,
+                        max: 1.0,
+                        thumbColor: Colors.white,
+                        inactiveColor: const Color.fromARGB(115, 255, 255, 255),
+                        activeColor: Colors.white,
+                        onChanged: (value) {
+                          FlutterVolumeController.setVolume(value);
+                        },
+                      ),
+                      const SizedBox(height: 30),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
