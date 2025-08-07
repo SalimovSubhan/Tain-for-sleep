@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:rain_for_sleep/core/services/shared_preferens_sevice.dart';
 
 class CastomAlertDialog extends HookConsumerWidget {
   const CastomAlertDialog({super.key, required this.isShowSettings});
@@ -10,7 +11,8 @@ class CastomAlertDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final groupValue = useState<String>('ru');
+    final currentLocale = context.locale.languageCode;
+    final groupValue = useState<String?>(currentLocale);
 
     return Container(
       width: double.infinity,
@@ -27,9 +29,10 @@ class CastomAlertDialog extends HookConsumerWidget {
         ),
         child: Column(
           children: [
-            const Text(
-              'Языкь',
-              style: TextStyle(fontSize: 20, color: Colors.white),
+            const SizedBox(height: 5),
+            Text(
+              'Language'.tr(),
+              style: const TextStyle(fontSize: 20, color: Colors.white),
             ),
             const SizedBox(height: 15),
             Container(
@@ -43,105 +46,47 @@ class CastomAlertDialog extends HookConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  GestureDetector(
-                    onTap: () {
+                  ////////////////////////////////////////////tg
+                  languageOption(
+                    onTap: () async {
                       groupValue.value = 'tg';
                       context.setLocale(const Locale('tg'));
                       isShowSettings.value = false;
+                      await ref
+                          .read(prefsServiseProvider)
+                          .setLanguage(value: 'tg');
                     },
-                    child: Row(
-                      children: [
-                        Radio(
-                          activeColor: Colors.blue,
-                          value: 'tg',
-                          groupValue: groupValue.value,
-                          onChanged: (value) {
-                            groupValue.value = 'tg';
-                            context.setLocale(const Locale('tg'));
-                            isShowSettings.value = false;
-                          },
-
-                          fillColor: WidgetStateProperty.resolveWith<Color>((
-                            states,
-                          ) {
-                            if (states.contains(WidgetState.selected)) {
-                              return Colors.blue;
-                            }
-                            return Colors.white;
-                          }),
-                        ),
-                        const Text(
-                          'Точики',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ],
-                    ),
+                    value: 'tg',
+                    title: 'Точики',
+                    groupValue: groupValue.value ?? '',
                   ),
-                  GestureDetector(
-                    onTap: () {
+                  ////////////////////////////////////////////ru
+                  languageOption(
+                    onTap: () async {
                       groupValue.value = 'ru';
                       context.setLocale(const Locale('ru'));
                       isShowSettings.value = false;
+                      await ref
+                          .read(prefsServiseProvider)
+                          .setLanguage(value: 'ru');
                     },
-                    child: Row(
-                      children: [
-                        Radio(
-                          activeColor: Colors.blue,
-                          value: 'ru',
-                          groupValue: groupValue.value,
-                          onChanged: (value) {
-                            groupValue.value = 'ru';
-                            context.setLocale(const Locale('ru'));
-                            isShowSettings.value = false;
-                          },
-                          fillColor: WidgetStateProperty.resolveWith<Color>((
-                            states,
-                          ) {
-                            if (states.contains(WidgetState.selected)) {
-                              return Colors.blue;
-                            }
-                            return Colors.white;
-                          }),
-                        ),
-                        const Text(
-                          'Русский',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ],
-                    ),
+                    value: 'ru',
+                    title: 'Русский',
+                    groupValue: groupValue.value ?? '',
                   ),
-                  GestureDetector(
-                    onTap: () {
+                  /////////////////////////////////////////////en
+                  languageOption(
+                    onTap: () async {
                       groupValue.value = 'en';
                       context.setLocale(const Locale('en'));
                       isShowSettings.value = false;
+                      await ref
+                          .read(prefsServiseProvider)
+                          .setLanguage(value: 'en');
                     },
-                    child: Row(
-                      children: [
-                        Radio(
-                          activeColor: Colors.blue,
-                          value: 'en',
-                          groupValue: groupValue.value,
-                          onChanged: (value) {
-                            groupValue.value = 'en';
-                            context.setLocale(const Locale('en'));
-                            isShowSettings.value = false;
-                          },
-                          fillColor: WidgetStateProperty.resolveWith<Color>((
-                            states,
-                          ) {
-                            if (states.contains(WidgetState.selected)) {
-                              return Colors.blue;
-                            }
-                            return Colors.white;
-                          }),
-                        ),
-                        const Text(
-                          'English',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ],
-                    ),
+                    value: 'en',
+                    title: 'English',
+                    groupValue: groupValue.value ?? '',
                   ),
                 ],
               ),
@@ -151,4 +96,33 @@ class CastomAlertDialog extends HookConsumerWidget {
       ),
     );
   }
+}
+
+Widget languageOption({
+  void Function()? onTap,
+  required String groupValue,
+  required String value,
+  required String title,
+}) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Row(
+      children: [
+        Radio(
+          activeColor: Colors.blue,
+          value: value,
+          groupValue: groupValue,
+          onChanged: (value) {},
+
+          fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+            if (states.contains(WidgetState.selected)) {
+              return Colors.blue;
+            }
+            return Colors.white;
+          }),
+        ),
+        Text(title, style: const TextStyle(color: Colors.white, fontSize: 20)),
+      ],
+    ),
+  );
 }
