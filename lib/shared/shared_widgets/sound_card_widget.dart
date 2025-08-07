@@ -1,14 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class SoundCardWidget extends StatelessWidget {
-  final String title;
+  final String titleKey;
   final String image;
   final String sound;
   final Gradient? gradient;
   const SoundCardWidget({
     super.key,
-    required this.title,
+    required this.titleKey,
     required this.image,
     required this.sound,
     this.gradient,
@@ -22,7 +23,7 @@ class SoundCardWidget extends StatelessWidget {
           '/timer_screen',
           extra: {
             'image': image,
-            'title': title,
+            'title': titleKey,
             'sound': sound,
             'gradient': gradient,
           },
@@ -48,7 +49,7 @@ class SoundCardWidget extends StatelessWidget {
             ),
           ),
           child: Text(
-            title,
+            titleKey.tr(),
             style: const TextStyle(color: Colors.white),
             textAlign: TextAlign.center,
           ),

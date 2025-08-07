@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_volume_controller/flutter_volume_controller.dart';
@@ -55,7 +56,7 @@ class SleepSoundScreen extends HookConsumerWidget {
         volume.value = value;
       });
       audioHandler
-          .customAction('setSource', {'assetPath': sound, 'title': title})
+          .customAction('setSource', {'assetPath': sound, 'title': title.tr()})
           .then((_) {
             audioHandler.play();
           });
@@ -117,7 +118,7 @@ class SleepSoundScreen extends HookConsumerWidget {
                               width: MediaQuery.of(context).size.width * 0.23,
                             ),
                             Text(
-                              title,
+                              title.tr(),
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

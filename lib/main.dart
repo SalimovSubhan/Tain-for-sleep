@@ -21,8 +21,8 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      path: 'assets/transitions',
-      supportedLocales: const [Locale('an'), Locale('ru')],
+      path: 'assets/translations',
+      supportedLocales: const [Locale('en'), Locale('ru'), Locale('tg')],
       fallbackLocale: const Locale('ru'),
       child: UncontrolledProviderScope(
         container: container,

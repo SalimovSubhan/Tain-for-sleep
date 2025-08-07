@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class SoundCardDto {
-  final String title;
+  String titleKey;
   final String image;
   final String sound;
   final Gradient? gradient;
 
-  const SoundCardDto({
+  SoundCardDto({
     required this.image,
     required this.sound,
-    required this.title,
+    required this.titleKey,
     this.gradient,
   });
 }
