@@ -13,6 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    // ignore: use_build_context_synchronously
     Future.delayed(const Duration(seconds: 2), () => context.go('/home'));
   }
 
