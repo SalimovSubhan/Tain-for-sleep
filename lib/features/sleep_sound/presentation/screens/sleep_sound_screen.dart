@@ -6,7 +6,7 @@ import 'package:flutter_volume_controller/flutter_volume_controller.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rain_for_sleep/features/sleep_sound/presentation/providers/providers.dart';
-import 'package:rain_for_sleep/features/sleep_sound/presentation/widgets/castom_dialog_widget.dart';
+import 'package:rain_for_sleep/features/sleep_sound/presentation/widgets/celect_timer/select_timer_widget.dart';
 import 'package:rain_for_sleep/shared/shared_aplication/audio_handler_provider.dart';
 
 class SleepSoundScreen extends HookConsumerWidget {
@@ -26,7 +26,6 @@ class SleepSoundScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final secondForText = useMemoized(() => ValueNotifier<String?>(null));
-    final showCastomDialog = useState<bool>(false);
     final switchTimer = useState<int>(0);
     final groupValueForCastomDialog = useState<int?>(null);
     final volume = useState<double?>(0.0);
@@ -79,13 +78,8 @@ class SleepSoundScreen extends HookConsumerWidget {
     }, [switchTimer.value]);
 
     return PopScope(
-      canPop: !showCastomDialog.value,
       onPopInvokedWithResult: (didPop, result) {
-        if (showCastomDialog.value) {
-          showCastomDialog.value = false;
-        } else {
-          audioHandler.stop();
-        }
+        audioHandler.stop();
       },
       child: Container(
         decoration: BoxDecoration(gradient: gradient),
@@ -111,111 +105,108 @@ class SleepSoundScreen extends HookConsumerWidget {
               ),
             ),
           ),
-          body: Stack(
-            children: [
-              SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 350,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(image),
-                            fit: BoxFit.cover,
-                          ),
-                          color: const Color.fromARGB(255, 36, 152, 247),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 350,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(image),
+                        fit: BoxFit.cover,
                       ),
-                      const SizedBox(height: 30),
-                      GestureDetector(
-                        onTap: () {
-                          showCastomDialog.value = true;
+                      color: const Color.fromARGB(255, 36, 152, 247),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  GestureDetector(
+                    onTap: () {
+                      // showCastomDialog.value = true;
+                      showDialog(
+                        context: context,
+                        barrierDismissible: true,
+                        builder: (context) {
+                          return SelectTimerWidget(
+                            groupValueForCastomDialog:
+                                groupValueForCastomDialog,
+                            switchTimer: switchTimer,
+                          );
                         },
-                        child: const Icon(
-                          Icons.timer_sharp,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      ValueListenableBuilder(
-                        valueListenable: secondForText,
-                        builder: (context, value, child) {
-                          return value != null
-                              ? Text(
-                                value,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                ),
-                              )
-                              : const SizedBox.shrink();
-                        },
-                      ),
-                      const SizedBox(height: 10),
-                      Slider(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
-                        value: volume.value ?? 0.0,
-                        min: 0.0,
-                        max: 1.0,
-                        thumbColor: Colors.white,
-                        inactiveColor: const Color.fromARGB(115, 255, 255, 255),
-                        activeColor: Colors.white,
-                        onChanged: (value) {
-                          FlutterVolumeController.setVolume(value);
-                        },
-                      ),
-                      const SizedBox(height: 30),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 40),
-                            child: StreamBuilder(
-                              stream: audioHandler.playbackState,
-                              builder: (context, snapshot) {
-                                final isPlaying =
-                                    snapshot.data?.playing ?? false;
-                                return GestureDetector(
-                                  onTap: () {
-                                    if (isPlaying) {
-                                      audioHandler.pause();
-                                    } else {
-                                      audioHandler.play();
-                                    }
-                                  },
-                                  child: CircleAvatar(
-                                    radius: 28,
-                                    backgroundColor: Colors.white,
-                                    child: Icon(
-                                      isPlaying
-                                          ? Icons.pause
-                                          : Icons.play_arrow,
-                                    ),
-                                  ),
-                                );
-                              },
+                      );
+                    },
+                    child: const Icon(
+                      Icons.timer_sharp,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ValueListenableBuilder(
+                    valueListenable: secondForText,
+                    builder: (context, value, child) {
+                      return value != null
+                          ? Text(
+                            value,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
                             ),
-                          ),
-                        ],
+                          )
+                          : const SizedBox.shrink();
+                    },
+                  ),
+                  const SizedBox(height: 10),
+                  Slider(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    value: volume.value ?? 0.0,
+                    min: 0.0,
+                    max: 1.0,
+                    thumbColor: Colors.white,
+                    inactiveColor: const Color.fromARGB(115, 255, 255, 255),
+                    activeColor: Colors.white,
+                    onChanged: (value) {
+                      FlutterVolumeController.setVolume(value);
+                    },
+                  ),
+                  const SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        child: StreamBuilder(
+                          stream: audioHandler.playbackState,
+                          builder: (context, snapshot) {
+                            final isPlaying = snapshot.data?.playing ?? false;
+                            return GestureDetector(
+                              onTap: () {
+                                if (isPlaying) {
+                                  audioHandler.pause();
+                                } else {
+                                  audioHandler.play();
+                                }
+                              },
+                              child: CircleAvatar(
+                                radius: 28,
+                                backgroundColor: Colors.white,
+                                child: Icon(
+                                  isPlaying ? Icons.pause : Icons.play_arrow,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                       ),
-                      const SizedBox(height: 10),
                     ],
                   ),
-                ),
+                  const SizedBox(height: 10),
+                ],
               ),
-              showCastomDialog.value
-                  ? CastomDialogWidget(
-                    groupValueForCastomDialog: groupValueForCastomDialog,
-                    showCastomDialog: showCastomDialog,
-                    switchTimer: switchTimer,
-                  )
-                  : const SizedBox.shrink(),
-            ],
+            ),
           ),
         ),
       ),

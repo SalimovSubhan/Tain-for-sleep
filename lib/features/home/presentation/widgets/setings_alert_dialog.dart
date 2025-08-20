@@ -1,43 +1,51 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class CastomAlertDialog extends HookConsumerWidget {
-  const CastomAlertDialog({super.key, required this.isShowSettings});
-
-  final ValueNotifier<bool> isShowSettings;
+class SetingsAlertDialog extends HookConsumerWidget {
+  const SetingsAlertDialog({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentLocale = context.locale.languageCode;
     final groupValue = useState<String?>(currentLocale);
 
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: const Color.fromARGB(89, 0, 0, 0),
-      alignment: Alignment.center,
+    return Dialog(
       child: Container(
-        width: 200,
-        height: 210,
+        padding: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 130, 184, 228),
-
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: 5),
-            Text(
-              'Language'.tr(),
-              style: const TextStyle(fontSize: 20, color: Colors.white),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Language'.tr(),
+                    style: const TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      context.pop();
+                    },
+                    icon: const Icon(Icons.close, color: Colors.white),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 15),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
               width: double.infinity,
-              height: 150,
+              padding: const EdgeInsets.symmetric(vertical: 10),
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 16, 122, 208),
                 borderRadius: BorderRadius.circular(20),
@@ -45,43 +53,37 @@ class CastomAlertDialog extends HookConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ////////////////////////////////////////////tg
+                  //tg
                   languageOption(
                     onTap: () async {
                       groupValue.value = 'tr';
-                      context.setLocale(const Locale('tr'));
-                      isShowSettings.value = false;
-                      // await ref
-                      //     .read(prefsServiseProvider)
-                      //     .setLanguage(value: 'tg');
+                      await context.setLocale(const Locale('tr'));
+                      if (!context.mounted) return;
+                      context.pop();
                     },
-                    value: 'tg',
+                    value: 'tr',
                     title: 'Точики',
                     groupValue: groupValue.value ?? '',
                   ),
-                  ////////////////////////////////////////////ru
+                  //ru
                   languageOption(
                     onTap: () async {
                       groupValue.value = 'ru';
-                      context.setLocale(const Locale('ru'));
-                      isShowSettings.value = false;
-                      // await ref
-                      //     .read(prefsServiseProvider)
-                      //     .setLanguage(value: 'ru');
+                      await context.setLocale(const Locale('ru'));
+                      if (!context.mounted) return;
+                      context.pop();
                     },
                     value: 'ru',
                     title: 'Русский',
                     groupValue: groupValue.value ?? '',
                   ),
-                  /////////////////////////////////////////////en
+                  //en
                   languageOption(
                     onTap: () async {
                       groupValue.value = 'en';
-                      context.setLocale(const Locale('en'));
-                      isShowSettings.value = false;
-                      // await ref
-                      //     .read(prefsServiseProvider)
-                      //     .setLanguage(value: 'en');
+                      await context.setLocale(const Locale('en'));
+                      if (!context.mounted) return;
+                      context.pop();
                     },
                     value: 'en',
                     title: 'English',
@@ -115,7 +117,7 @@ Widget languageOption({
 
           fillColor: WidgetStateProperty.resolveWith<Color>((states) {
             if (states.contains(WidgetState.selected)) {
-              return Colors.blue;
+              return Colors.green;
             }
             return Colors.white;
           }),
