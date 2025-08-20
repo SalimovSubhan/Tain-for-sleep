@@ -87,48 +87,37 @@ class SleepSoundScreen extends HookConsumerWidget {
           audioHandler.stop();
         }
       },
-      child: Scaffold(
-        appBar: AppBar(),
-        body: Container(
-          decoration: BoxDecoration(gradient: gradient),
-          child: Stack(
+      child: Container(
+        decoration: BoxDecoration(gradient: gradient),
+        child: Scaffold(
+          backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+          appBar: AppBar(
+            backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+            toolbarHeight: 80,
+            leading: GestureDetector(
+              onTap: () {
+                context.pop();
+                audioHandler.stop();
+              },
+              child: const Icon(Icons.close, color: Colors.white),
+            ),
+            centerTitle: true,
+            title: Text(
+              title.tr(),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 17,
+              ),
+            ),
+          ),
+          body: Stack(
             children: [
               SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 5,
-                          vertical: 30,
-                        ),
-                        child: Row(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                context.pop();
-                                audioHandler.stop();
-                              },
-                              child: const Icon(
-                                Icons.close,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.23,
-                            ),
-                            Text(
-                              title.tr(),
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
                       Container(
                         width: double.infinity,
                         height: 350,
