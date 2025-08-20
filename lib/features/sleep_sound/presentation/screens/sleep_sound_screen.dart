@@ -88,6 +88,7 @@ class SleepSoundScreen extends HookConsumerWidget {
         }
       },
       child: Scaffold(
+        appBar: AppBar(),
         body: Container(
           decoration: BoxDecoration(gradient: gradient),
           child: Stack(

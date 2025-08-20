@@ -26,11 +26,13 @@ final router = GoRouter(
         final sound = extra['sound'];
         final gradient = extra['gradient'];
         return CustomTransitionPage(
-          child: SleepSoundScreen(
-            image: image,
-            title: title,
-            sound: sound,
-            gradient: gradient,
+          child: Material(
+            child: SleepSoundScreen(
+              image: image,
+              title: title,
+              sound: sound,
+              gradient: gradient,
+            ),
           ),
           transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {

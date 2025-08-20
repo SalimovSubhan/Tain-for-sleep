@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:rain_for_sleep/core/services/shared_preferens_sevice.dart';
 
 class CastomAlertDialog extends HookConsumerWidget {
   const CastomAlertDialog({super.key, required this.isShowSettings});
@@ -49,12 +48,12 @@ class CastomAlertDialog extends HookConsumerWidget {
                   ////////////////////////////////////////////tg
                   languageOption(
                     onTap: () async {
-                      groupValue.value = 'tg';
-                      context.setLocale(const Locale('tg'));
+                      groupValue.value = 'tr';
+                      context.setLocale(const Locale('tr'));
                       isShowSettings.value = false;
-                      await ref
-                          .read(prefsServiseProvider)
-                          .setLanguage(value: 'tg');
+                      // await ref
+                      //     .read(prefsServiseProvider)
+                      //     .setLanguage(value: 'tg');
                     },
                     value: 'tg',
                     title: 'Точики',
@@ -66,9 +65,9 @@ class CastomAlertDialog extends HookConsumerWidget {
                       groupValue.value = 'ru';
                       context.setLocale(const Locale('ru'));
                       isShowSettings.value = false;
-                      await ref
-                          .read(prefsServiseProvider)
-                          .setLanguage(value: 'ru');
+                      // await ref
+                      //     .read(prefsServiseProvider)
+                      //     .setLanguage(value: 'ru');
                     },
                     value: 'ru',
                     title: 'Русский',
@@ -80,9 +79,9 @@ class CastomAlertDialog extends HookConsumerWidget {
                       groupValue.value = 'en';
                       context.setLocale(const Locale('en'));
                       isShowSettings.value = false;
-                      await ref
-                          .read(prefsServiseProvider)
-                          .setLanguage(value: 'en');
+                      // await ref
+                      //     .read(prefsServiseProvider)
+                      //     .setLanguage(value: 'en');
                     },
                     value: 'en',
                     title: 'English',
