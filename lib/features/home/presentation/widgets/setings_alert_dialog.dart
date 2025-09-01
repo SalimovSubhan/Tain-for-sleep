@@ -56,12 +56,12 @@ class SetingsAlertDialog extends HookConsumerWidget {
                   //tg
                   languageOption(
                     onTap: () async {
-                      groupValue.value = 'tr';
-                      await context.setLocale(const Locale('tr'));
+                      groupValue.value = 'tg';
+                      await context.setLocale(const Locale('tg'));
                       if (!context.mounted) return;
                       context.pop();
                     },
-                    value: 'tr',
+                    value: 'tg',
                     title: 'Точики',
                     groupValue: groupValue.value ?? '',
                   ),

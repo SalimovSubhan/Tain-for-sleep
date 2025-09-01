@@ -22,8 +22,9 @@ void main() async {
   runApp(
     EasyLocalization(
       path: 'assets/translations',
-      supportedLocales: const [Locale('en'), Locale('ru'), Locale('tr')],
+      supportedLocales: const [Locale('en'), Locale('ru'), Locale('tg')],
       fallbackLocale: const Locale('ru'),
+
       child: UncontrolledProviderScope(
         container: container,
         child: const MyApp(),
@@ -44,6 +45,10 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
+      localeResolutionCallback: (locale, supportedLocales) {
+        if (locale?.languageCode == 'tg') return const Locale('ru');
+        return locale;
+      },
     );
   }
 }
