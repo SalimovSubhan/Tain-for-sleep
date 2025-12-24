@@ -84,126 +84,269 @@ class SleepSoundScreen extends HookConsumerWidget {
       child: Container(
         decoration: BoxDecoration(gradient: gradient),
         child: Scaffold(
-          backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
-            backgroundColor: const Color.fromARGB(0, 255, 255, 255),
-            toolbarHeight: 80,
-            leading: GestureDetector(
-              onTap: () {
-                context.pop();
-                audioHandler.stop();
-              },
-              child: const Icon(Icons.close, color: Colors.white),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            leading: Container(
+              margin: const EdgeInsets.only(left: 16, top: 8),
+              child: CircleAvatar(
+                backgroundColor: Colors.black.withAlpha(76), // 0.3 * 255 ≈ 76
+                child: IconButton(
+                  onPressed: () {
+                    context.pop();
+                    audioHandler.stop();
+                  },
+                  icon: const Icon(Icons.close, color: Colors.white, size: 22),
+                  padding: EdgeInsets.zero,
+                ),
+              ),
             ),
             centerTitle: true,
             title: Text(
               title.tr(),
               style: const TextStyle(
                 color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 17,
+                fontWeight: FontWeight.w600,
+                fontSize: 18,
+                letterSpacing: 0.5,
               ),
             ),
+            actions: [
+              Container(
+                width: 56, // Для симметрии с leading
+              ),
+            ],
           ),
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
                 children: [
+                  // Анимированная картинка с тенью
                   Container(
                     width: double.infinity,
-                    height: 350,
+                    height: 300,
+                    margin: const EdgeInsets.only(top: 20, bottom: 40),
                     decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(image),
-                        fit: BoxFit.cover,
+                      borderRadius: BorderRadius.circular(24),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withAlpha(76), // 0.3 * 255 ≈ 76
+                          blurRadius: 30,
+                          spreadRadius: 5,
+                          offset: const Offset(0, 10),
+                        ),
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(24),
+                      child: AnimatedScale(
+                        scale: 0.98,
+                        duration: const Duration(milliseconds: 300),
+                        child: Image.asset(
+                          image,
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                          height: double.infinity,
+                        ),
                       ),
-                      color: const Color.fromARGB(255, 36, 152, 247),
-                      borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  const SizedBox(height: 30),
+
+                  // Таймер с улучшенным дизайном
                   GestureDetector(
                     onTap: () {
-                      // showCastomDialog.value = true;
                       showDialog(
                         context: context,
                         barrierDismissible: true,
+                        barrierColor: Colors.black.withAlpha(
+                          178,
+                        ), // 0.7 * 255 ≈ 178
                         builder: (context) {
-                          return SelectTimerWidget(
-                            groupValueForCastomDialog:
-                                groupValueForCastomDialog,
-                            switchTimer: switchTimer,
+                          return Dialog(
+                            backgroundColor: Colors.transparent,
+                            insetPadding: const EdgeInsets.all(20),
+                            child: SelectTimerWidget(
+                              groupValueForCastomDialog:
+                                  groupValueForCastomDialog,
+                              switchTimer: switchTimer,
+                            ),
                           );
                         },
                       );
                     },
-                    child: const Icon(
-                      Icons.timer_sharp,
-                      color: Colors.white,
-                      size: 30,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 16,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withAlpha(25), // 0.1 * 255 ≈ 25
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: Colors.white.withAlpha(51), // 0.2 * 255 ≈ 51
+                          width: 1,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.timer_outlined,
+                            color: Colors.white,
+                            size: 24,
+                          ),
+                          const SizedBox(width: 12),
+                          ValueListenableBuilder(
+                            valueListenable: secondForText,
+                            builder: (context, value, child) {
+                              return Text(
+                                value ?? 'Set Timer'.tr(),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 0.5,
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  ValueListenableBuilder(
-                    valueListenable: secondForText,
-                    builder: (context, value, child) {
-                      return value != null
-                          ? Text(
-                            value,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          )
-                          : const SizedBox.shrink();
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  Slider(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    value: volume.value ?? 0.0,
-                    min: 0.0,
-                    max: 1.0,
-                    thumbColor: Colors.white,
-                    inactiveColor: const Color.fromARGB(115, 255, 255, 255),
-                    activeColor: Colors.white,
-                    onChanged: (value) {
-                      FlutterVolumeController.setVolume(value);
-                    },
-                  ),
-                  const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+
+                  const SizedBox(height: 40),
+
+                  // Улучшенный слайдер громкости
+                  Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 40),
-                        child: StreamBuilder(
-                          stream: audioHandler.playbackState,
-                          builder: (context, snapshot) {
-                            final isPlaying = snapshot.data?.playing ?? false;
-                            return GestureDetector(
-                              onTap: () {
-                                if (isPlaying) {
-                                  audioHandler.pause();
-                                } else {
-                                  audioHandler.play();
-                                }
-                              },
-                              child: CircleAvatar(
-                                radius: 28,
-                                backgroundColor: Colors.white,
-                                child: Icon(
-                                  isPlaying ? Icons.pause : Icons.play_arrow,
-                                ),
-                              ),
-                            );
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(
+                            Icons.volume_down_rounded,
+                            color: Colors.white.withAlpha(
+                              178,
+                            ), // 0.7 * 255 ≈ 178
+                            size: 22,
+                          ),
+                          Icon(
+                            Icons.volume_up_rounded,
+                            color: Colors.white.withAlpha(
+                              178,
+                            ), // 0.7 * 255 ≈ 178
+                            size: 22,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          trackHeight: 6,
+                          thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 12,
+                            disabledThumbRadius: 8,
+                          ),
+                          overlayShape: const RoundSliderOverlayShape(
+                            overlayRadius: 20,
+                          ),
+                          activeTrackColor: Colors.white,
+                          inactiveTrackColor: Colors.white.withAlpha(
+                            51,
+                          ), // 0.2 * 255 ≈ 51
+                          thumbColor: Colors.white,
+                          overlayColor: Colors.white.withAlpha(
+                            25,
+                          ), // 0.1 * 255 ≈ 25
+                        ),
+                        child: Slider(
+                          value: volume.value ?? 0.0,
+                          min: 0.0,
+                          max: 1.0,
+                          onChanged: (value) {
+                            FlutterVolumeController.setVolume(value);
                           },
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
+
+                  const Spacer(),
+
+                  // Улучшенные кнопки управления
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 40),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Кнопка остановки
+                        StreamBuilder(
+                          stream: audioHandler.playbackState,
+                          builder: (context, snapshot) {
+                            final isPlaying = snapshot.data?.playing ?? false;
+                            return Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withAlpha(
+                                      76,
+                                    ), // 0.3 * 255 ≈ 76
+                                    blurRadius: 15,
+                                    spreadRadius: 3,
+                                    offset: const Offset(0, 5),
+                                  ),
+                                ],
+                              ),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  onTap: () {
+                                    if (isPlaying) {
+                                      audioHandler.pause();
+                                    } else {
+                                      audioHandler.play();
+                                    }
+                                  },
+                                  borderRadius: BorderRadius.circular(40),
+                                  child: Container(
+                                    width: 80,
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                        colors:
+                                            isPlaying
+                                                ? [
+                                                  const Color(0xFF667EEA),
+                                                  const Color(0xFF764BA2),
+                                                ]
+                                                : [
+                                                  const Color(0xFF4CAF50),
+                                                  const Color(0xFF2E7D32),
+                                                ],
+                                      ),
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Icon(
+                                      isPlaying
+                                          ? Icons.pause_rounded
+                                          : Icons.play_arrow_rounded,
+                                      color: Colors.white,
+                                      size: 36,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -6,11 +6,14 @@ import 'package:rain_for_sleep/core/services/sounds_sevices.dart';
 import 'package:rain_for_sleep/features/home/presentation/widgets/setings_alert_dialog.dart';
 import 'package:rain_for_sleep/shared/shared_widgets/sounds_screen.dart';
 
+final checkLanguage = StateProvider((ref) => 0);
+
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(checkLanguage);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 42, 78, 162),
       body: DefaultTabController(

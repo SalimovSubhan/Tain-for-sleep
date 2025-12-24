@@ -13,179 +13,293 @@ class SelectTimerWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
-      color: Colors.black.withAlpha(125),
-      padding: const EdgeInsets.only(left: 15, right: 15, top: 80, bottom: 60),
+    final timeOptions = [
+      _TimeOption(
+        title: 'Без таймера',
+        seconds: 0,
+        subtitle: 'Звук будет играть бесконечно',
+        icon: Icons.all_inclusive_rounded,
+      ),
+      _TimeOption(
+        title: '5 минут',
+        seconds: 300,
+        subtitle: 'Короткий перерыв',
+        showLeading: true,
+      ),
+      _TimeOption(
+        title: '10 минут',
+        seconds: 600,
+        subtitle: 'Быстрая медитация',
+        showLeading: true,
+      ),
+      _TimeOption(
+        title: '15 минут',
+        seconds: 900,
+        subtitle: 'Энергетический сон',
+        showLeading: true,
+      ),
+      _TimeOption(
+        title: '20 минут',
+        seconds: 1200,
+        subtitle: 'Оптимальное время',
+        showLeading: true,
+      ),
+      _TimeOption(
+        title: '30 минут',
+        seconds: 1800,
+        subtitle: 'Глубокая релаксация',
+        showLeading: true,
+      ),
+      _TimeOption(
+        title: '45 минут',
+        seconds: 2700,
+        subtitle: 'Полный цикл сна',
+        showLeading: true,
+      ),
+      _TimeOption(
+        title: '1 час',
+        seconds: 3600,
+        subtitle: 'Полноценный отдых',
+        showLeading: true,
+      ),
+      _TimeOption(
+        title: '2 часа',
+        seconds: 7200,
+        subtitle: 'Длительный сон',
+        showLeading: true,
+      ),
+    ];
+
+    return Dialog(
+      backgroundColor: Colors.transparent,
+      insetPadding: const EdgeInsets.all(24),
       child: Container(
+        constraints: const BoxConstraints(maxWidth: 500, maxHeight: 600),
         decoration: BoxDecoration(
-          color: Colors.black.withAlpha(150),
-          borderRadius: BorderRadius.circular(20),
+          color: const Color(0xFF111827),
+          borderRadius: BorderRadius.circular(24),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(150),
+              blurRadius: 40,
+              spreadRadius: 2,
+              offset: const Offset(0, 20),
+            ),
+          ],
         ),
-        padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Настроить длительность таймера',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 213, 209, 209),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 17,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Шапка диалога
+            Container(
+              padding: const EdgeInsets.fromLTRB(24, 20, 24, 20),
+              decoration: BoxDecoration(
+                color: const Color(0xFF1F2937),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(24),
+                  topRight: Radius.circular(24),
+                ),
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.white.withAlpha(30),
+                    width: 1,
+                  ),
                 ),
               ),
-              const SizedBox(height: 10),
-              RadioWithTextWidget(
-                title: 'Нет таймера',
-                value: 0,
-                onTap: () {
-                  groupValueForCastomDialog.value = 0;
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Таймер сна',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: -0.5,
+                        ),
+                      ),
+                    ],
+                  ),
 
-                  switchTimer.value = 0;
-                },
-                isSelected: groupValueForCastomDialog.value == 0,
+                  // Кнопка закрытия
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white.withAlpha(10),
+                    ),
+                    child: IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: Icon(
+                        Icons.close_rounded,
+                        color: Colors.white.withAlpha(180),
+                        size: 22,
+                      ),
+                      padding: EdgeInsets.zero,
+                      splashRadius: 20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Основной контент
+            Expanded(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 16,
+                ),
+                child: Column(
+                  children: [
+                    // Опции времени
+                    ...timeOptions.map(
+                      (option) => RadioWithTextWidget(
+                        title: option.title,
+                        subtitle: option.subtitle,
+                        value: option.seconds,
+                        onTap: () {
+                          groupValueForCastomDialog.value = option.seconds;
+                          switchTimer.value = option.seconds;
+                          Navigator.pop(context);
+                        },
+                        isSelected:
+                            groupValueForCastomDialog.value == option.seconds,
+                        showLeadingIcon: option.showLeading,
+                        customIcon: option.icon,
+                      ),
+                    ),
+
+                    // Кастомное время
+                    _buildCustomTimeOption(context),
+
+                    const SizedBox(height: 20),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCustomTimeOption(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () async {
+          final picked = await showTimePicker(
+            context: context,
+            initialTime: const TimeOfDay(hour: 0, minute: 30),
+            builder: (context, child) {
+              return Theme(
+                data: ThemeData.dark().copyWith(
+                  colorScheme: const ColorScheme.dark(
+                    primary: Color(0xFF2563EB),
+                    onPrimary: Colors.white,
+                    surface: Color(0xFF111827),
+                    onSurface: Colors.white,
+                    background: Color(0xFF111827),
+                  ),
+                  dialogBackgroundColor: const Color(0xFF111827),
+                  timePickerTheme: TimePickerThemeData(
+                    backgroundColor: const Color(0xFF111827),
+                    dialBackgroundColor: const Color(0xFF1F2937),
+                    dialTextColor: Colors.white,
+                    entryModeIconColor: Colors.white.withAlpha(150),
+                    hourMinuteTextColor: Colors.white,
+                    dayPeriodTextColor: Colors.white,
+                    dayPeriodColor: const Color(0xFF1F2937),
+                    hourMinuteColor: const Color(0xFF1F2937),
+                    helpTextStyle: TextStyle(
+                      color: Colors.white.withAlpha(180),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                child: child!,
+              );
+            },
+          );
+
+          if (picked != null) {
+            final seconds = (picked.hour * 3600) + (picked.minute * 60);
+            if (seconds > 0) {
+              groupValueForCastomDialog.value = -1;
+              switchTimer.value = seconds;
+              Navigator.pop(context);
+            }
+          }
+        },
+        borderRadius: BorderRadius.circular(16),
+        highlightColor: const Color(0xFF2563EB).withAlpha(20),
+        splashColor: const Color(0xFF2563EB).withAlpha(10),
+        child: Container(
+          margin: const EdgeInsets.only(top: 8, bottom: 8),
+          padding: const EdgeInsets.all(18),
+          decoration: BoxDecoration(
+            color: const Color(0xFF1F2937),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: const Color(0xFF2563EB).withAlpha(80),
+              width: 1.5,
+            ),
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 40,
+                height: 40,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    colors: [Color(0xFF2563EB), Color(0xFF7C3AED)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+                child: const Icon(
+                  Icons.edit_calendar_rounded,
+                  color: Colors.white,
+                  size: 20,
+                ),
               ),
 
-              RadioWithTextWidget(
-                title: 'Настройка длительност',
-                value: 2,
-                onTap: () async {
-                  final piker = await showTimePicker(
-                    context: context,
-                    initialTime: TimeOfDay.now(),
-                  );
-                  if (piker != null &&
-                      piker.hour >= TimeOfDay.now().hour &&
-                      piker.minute > TimeOfDay.now().minute) {
-                    final hour = (piker.hour - TimeOfDay.now().hour) * 3600;
-                    final minute = (piker.minute - TimeOfDay.now().minute) * 60;
-                    final result = hour + minute;
+              const SizedBox(width: 16),
 
-                    groupValueForCastomDialog.value = 2;
-
-                    switchTimer.value = result;
-                  }
-                },
-                isSelected: groupValueForCastomDialog.value == 2,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Свое время',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Выберите любое время вручную',
+                      style: TextStyle(
+                        color: Colors.white.withAlpha(140),
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
-              RadioWithTextWidget(
-                title: '5 минут',
-                value: 300,
-                onTap: () {
-                  groupValueForCastomDialog.value = 300;
-
-                  switchTimer.value = 300;
-                },
-                isSelected: groupValueForCastomDialog.value == 300,
-              ),
-
-              RadioWithTextWidget(
-                title: '10 минут',
-                value: 600,
-                onTap: () {
-                  groupValueForCastomDialog.value = 600;
-                  0;
-
-                  switchTimer.value = 600;
-                },
-                isSelected: groupValueForCastomDialog.value == 600,
-              ),
-
-              RadioWithTextWidget(
-                title: '15 минут',
-                value: 900,
-                onTap: () {
-                  groupValueForCastomDialog.value = 900;
-                  0;
-
-                  switchTimer.value = 900;
-                },
-                isSelected: groupValueForCastomDialog.value == 900,
-              ),
-
-              RadioWithTextWidget(
-                title: '20 минут',
-                value: 1200,
-                onTap: () {
-                  groupValueForCastomDialog.value = 1200;
-                  00;
-
-                  switchTimer.value = 1200;
-                },
-                isSelected: groupValueForCastomDialog.value == 1200,
-              ),
-
-              RadioWithTextWidget(
-                title: '30 минут',
-                value: 1800,
-                onTap: () {
-                  groupValueForCastomDialog.value = 1800;
-                  00;
-
-                  switchTimer.value = 1800;
-                },
-                isSelected: groupValueForCastomDialog.value == 1800,
-              ),
-
-              RadioWithTextWidget(
-                title: '40 минут',
-                value: 2400,
-                onTap: () {
-                  groupValueForCastomDialog.value = 2400;
-                  00;
-
-                  switchTimer.value = 2400;
-                },
-                isSelected: groupValueForCastomDialog.value == 2400,
-              ),
-
-              RadioWithTextWidget(
-                title: '1 час',
-                value: 3600,
-                onTap: () {
-                  groupValueForCastomDialog.value = 3600;
-                  00;
-
-                  switchTimer.value = 3600;
-                },
-                isSelected: groupValueForCastomDialog.value == 3600,
-              ),
-
-              RadioWithTextWidget(
-                title: '2 часа',
-                value: 7200,
-                onTap: () {
-                  groupValueForCastomDialog.value = 7200;
-                  00;
-
-                  switchTimer.value = 7200;
-                },
-                isSelected: groupValueForCastomDialog.value == 7200,
-              ),
-
-              RadioWithTextWidget(
-                title: '4 часа',
-                value: 14400,
-                onTap: () {
-                  groupValueForCastomDialog.value = 14400;
-                  400;
-
-                  switchTimer.value = 14400;
-                },
-                isSelected: groupValueForCastomDialog.value == 14400,
-              ),
-
-              RadioWithTextWidget(
-                title: '8 часа',
-                value: 28800,
-                onTap: () {
-                  groupValueForCastomDialog.value = 28800;
-                  800;
-
-                  switchTimer.value = 28800;
-                },
-                isSelected: groupValueForCastomDialog.value == 28800,
+              Icon(
+                Icons.chevron_right_rounded,
+                color: Colors.white.withAlpha(120),
+                size: 24,
               ),
             ],
           ),
@@ -193,4 +307,20 @@ class SelectTimerWidget extends HookConsumerWidget {
       ),
     );
   }
+}
+
+class _TimeOption {
+  final String title;
+  final int seconds;
+  final String subtitle;
+  final bool showLeading;
+  final IconData? icon;
+
+  _TimeOption({
+    required this.title,
+    required this.seconds,
+    required this.subtitle,
+    this.showLeading = false,
+    this.icon,
+  });
 }

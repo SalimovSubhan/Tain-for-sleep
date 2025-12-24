@@ -24,7 +24,7 @@ void main() async {
       path: 'assets/translations',
       supportedLocales: const [Locale('en'), Locale('ru'), Locale('tg')],
       fallbackLocale: const Locale('ru'),
-
+      saveLocale: true,
       child: UncontrolledProviderScope(
         container: container,
         child: const MyApp(),
@@ -45,9 +45,18 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
-      localeResolutionCallback: (locale, supportedLocales) {
-        if (locale?.languageCode == 'tg') return const Locale('ru');
-        return locale;
+
+      builder: (context, child) {
+        final materialLocale =
+            (context.locale.languageCode == 'tg')
+                ? const Locale('ru')
+                : context.locale;
+
+        return Localizations.override(
+          context: context,
+          locale: materialLocale,
+          child: child!,
+        );
       },
     );
   }
