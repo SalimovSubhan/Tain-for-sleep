@@ -138,6 +138,7 @@ class HomeScreen extends HookConsumerWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 40),
           ],
         ),
       ),

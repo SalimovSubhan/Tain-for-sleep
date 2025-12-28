@@ -49,16 +49,11 @@ class SleepSoundScreen extends HookConsumerWidget {
           volume.value = value;
         });
         await Permission.notification.request();
-        audioHandler
-            .customAction('setSource', {
-              'soundCard': soundCard,
-              'assetPath': soundCard.sound,
-              'title': soundCard.titleKey.tr(),
-              'image': soundCard.image,
-            })
-            .then((_) {
-              audioHandler.play();
-            });
+        audioHandler.customAction('setSource', {'soundCard': soundCard}).then((
+          _,
+        ) {
+          audioHandler.play();
+        });
       });
       return () {
         return FlutterVolumeController.removeListener();
