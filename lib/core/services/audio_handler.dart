@@ -1,6 +1,7 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:audio_session/audio_session.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:rain_for_sleep/shared/shared_data/sound_card_dto.dart';
 
 Future<AudioHandler> initAudioService() async {
   return AudioService.init(
@@ -74,18 +75,18 @@ class MyAudioHandler extends BaseAudioHandler with SeekHandler {
   ]) async {
     switch (name) {
       case 'setSource':
-        final assetPath = extras?['assetPath'] as String;
-        final title = extras?['title'] as String;
+        final soundCard = extras?['soundCard'] as SoundCardDto;
 
         mediaItem.add(
           MediaItem(
-            id: assetPath,
-            title: title,
-            artUri: Uri.parse('assets/images/baground_image.jpg'),
+            id: soundCard.sound,
+            title: soundCard.titleKey,
+            artUri: Uri.parse(soundCard.image),
             artist: 'Rain for sleep',
+            duration: null,
           ),
         );
-        await _player.setAudioSource(AudioSource.asset(assetPath));
+        await _player.setAudioSource(AudioSource.asset(soundCard.sound));
         await _player.setVolume(1);
         await _player.setLoopMode(LoopMode.one);
         break;

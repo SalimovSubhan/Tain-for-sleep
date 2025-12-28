@@ -4,6 +4,7 @@ import 'package:rain_for_sleep/features/home/presentation/screens/home_screen.da
 import 'package:rain_for_sleep/features/splash_screen.dart';
 import 'package:rain_for_sleep/features/sleep_sound/presentation/screens/sleep_sound_screen.dart';
 import 'package:rain_for_sleep/shared/shared_aplication/talker_provider.dart';
+import 'package:rain_for_sleep/shared/shared_data/sound_card_dto.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 final router = GoRouter(
@@ -21,19 +22,9 @@ final router = GoRouter(
       path: '/timer_screen',
       pageBuilder: (context, state) {
         final extra = state.extra as Map<String, dynamic>;
-        final title = extra['title'];
-        final image = extra['image'];
-        final sound = extra['sound'];
-        final gradient = extra['gradient'];
+        final soundCard = extra['soundCard'];
         return CustomTransitionPage(
-          child: Material(
-            child: SleepSoundScreen(
-              image: image,
-              title: title,
-              sound: sound,
-              gradient: gradient,
-            ),
-          ),
+          child: Material(child: SleepSoundScreen(soundCard: soundCard)),
           transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             final tween = Tween(
@@ -51,3 +42,23 @@ final router = GoRouter(
     ),
   ],
 );
+
+class AppNavigator {
+  static void go(BuildContext context, String path, {Object? extra}) {
+    debugPrint("🚀 GO: $path");
+    context.go(path, extra: extra);
+  }
+
+  static void push(BuildContext context, String path, {Object? extra}) {
+    debugPrint("➡️ PUSH: $path");
+    context.push(path, extra: extra);
+  }
+
+  static void pushTimerScreen({
+    required BuildContext context,
+    required SoundCardDto soundCard,
+  }) {
+    debugPrint("➡️ PUSH: /delivery_status");
+    context.push('/timer_screen', extra: {'soundCard': soundCard});
+  }
+}

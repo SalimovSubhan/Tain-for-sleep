@@ -25,12 +25,7 @@ class SoundsScreen extends HookConsumerWidget {
           ),
           itemBuilder: (context, index) {
             final soundCard = soundCards[index];
-            return SoundCardWidget(
-              image: soundCard.image,
-              sound: soundCard.sound,
-              titleKey: soundCard.titleKey,
-              gradient: soundCard.gradient,
-            );
+            return SoundCardWidget(soundCard: soundCard);
           },
           itemCount: soundCards.length,
         ),

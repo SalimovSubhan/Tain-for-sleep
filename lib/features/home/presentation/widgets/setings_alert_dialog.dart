@@ -225,12 +225,6 @@ class SetingsAlertDialog extends HookConsumerWidget {
                   height: 24,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
-                    image: const DecorationImage(
-                      image: AssetImage(
-                        'assets/flags/tj.png',
-                      ), // Добавь свои флаги
-                      fit: BoxFit.cover,
-                    ),
                   ),
                 )
               else if (localeCode == 'ru')
@@ -239,10 +233,6 @@ class SetingsAlertDialog extends HookConsumerWidget {
                   height: 24,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/flags/ru.png'),
-                      fit: BoxFit.cover,
-                    ),
                   ),
                 )
               else if (localeCode == 'en')
@@ -251,10 +241,6 @@ class SetingsAlertDialog extends HookConsumerWidget {
                   height: 24,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/flags/us.png'),
-                      fit: BoxFit.cover,
-                    ),
                   ),
                 ),
             ],

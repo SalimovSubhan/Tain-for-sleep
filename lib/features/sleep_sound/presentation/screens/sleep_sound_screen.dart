@@ -5,23 +5,16 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_volume_controller/flutter_volume_controller.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:rain_for_sleep/features/sleep_sound/presentation/providers/providers.dart';
 import 'package:rain_for_sleep/features/sleep_sound/presentation/widgets/celect_timer/select_timer_widget.dart';
 import 'package:rain_for_sleep/shared/shared_aplication/audio_handler_provider.dart';
+import 'package:rain_for_sleep/shared/shared_data/sound_card_dto.dart';
 
 class SleepSoundScreen extends HookConsumerWidget {
-  final String title;
-  final String image;
-  final String sound;
-  final Gradient? gradient;
+  final SoundCardDto soundCard;
 
-  const SleepSoundScreen({
-    super.key,
-    required this.image,
-    required this.title,
-    required this.sound,
-    this.gradient,
-  });
+  const SleepSoundScreen({super.key, required this.soundCard});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -51,15 +44,25 @@ class SleepSoundScreen extends HookConsumerWidget {
     }
 
     useEffect(() {
-      FlutterVolumeController.addListener((value) {
-        volume.value = value;
+      Future.microtask(() async {
+        FlutterVolumeController.addListener((value) {
+          volume.value = value;
+        });
+        await Permission.notification.request();
+        audioHandler
+            .customAction('setSource', {
+              'soundCard': soundCard,
+              'assetPath': soundCard.sound,
+              'title': soundCard.titleKey.tr(),
+              'image': soundCard.image,
+            })
+            .then((_) {
+              audioHandler.play();
+            });
       });
-      audioHandler
-          .customAction('setSource', {'assetPath': sound, 'title': title.tr()})
-          .then((_) {
-            audioHandler.play();
-          });
-      return null;
+      return () {
+        return FlutterVolumeController.removeListener();
+      };
     }, []);
 
     useEffect(() {
@@ -82,7 +85,7 @@ class SleepSoundScreen extends HookConsumerWidget {
         audioHandler.stop();
       },
       child: Container(
-        decoration: BoxDecoration(gradient: gradient),
+        decoration: BoxDecoration(gradient: soundCard.gradient),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
@@ -104,7 +107,7 @@ class SleepSoundScreen extends HookConsumerWidget {
             ),
             centerTitle: true,
             title: Text(
-              title.tr(),
+              soundCard.titleKey.tr(),
               style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w600,
@@ -145,7 +148,7 @@ class SleepSoundScreen extends HookConsumerWidget {
                         scale: 0.98,
                         duration: const Duration(milliseconds: 300),
                         child: Image.asset(
-                          image,
+                          soundCard.image,
                           fit: BoxFit.cover,
                           width: double.infinity,
                           height: double.infinity,

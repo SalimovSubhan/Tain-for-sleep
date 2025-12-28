@@ -1,38 +1,25 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:rain_for_sleep/router/router.dart';
+import 'package:rain_for_sleep/shared/shared_data/sound_card_dto.dart';
 
 class SoundCardWidget extends StatelessWidget {
-  final String titleKey;
-  final String image;
-  final String sound;
-  final Gradient? gradient;
-  const SoundCardWidget({
-    super.key,
-    required this.titleKey,
-    required this.image,
-    required this.sound,
-    this.gradient,
-  });
+  final SoundCardDto soundCard;
+  const SoundCardWidget({super.key, required this.soundCard});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(
-          '/timer_screen',
-          extra: {
-            'image': image,
-            'title': titleKey,
-            'sound': sound,
-            'gradient': gradient,
-          },
-        );
+        AppNavigator.pushTimerScreen(context: context, soundCard: soundCard);
       },
       child: Container(
         height: 170,
         decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
+          image: DecorationImage(
+            image: AssetImage(soundCard.image),
+            fit: BoxFit.cover,
+          ),
           borderRadius: BorderRadius.circular(20),
         ),
         alignment: Alignment.bottomCenter,
@@ -49,7 +36,7 @@ class SoundCardWidget extends StatelessWidget {
             ),
           ),
           child: Text(
-            titleKey.tr(),
+            soundCard.titleKey.tr(),
             style: const TextStyle(color: Colors.white),
             textAlign: TextAlign.center,
           ),
