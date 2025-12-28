@@ -18,7 +18,7 @@ class SleepSoundScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final secondForText = useMemoized(() => ValueNotifier<String?>(null));
+    final secondForText = useState<String?>(null);
     final switchTimer = useState<int>(0);
     final groupValueForCastomDialog = useState<int?>(null);
     final volume = useState<double?>(0.0);
@@ -91,10 +91,11 @@ class SleepSoundScreen extends HookConsumerWidget {
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
+            centerTitle: true,
             leading: Container(
               margin: const EdgeInsets.only(left: 16, top: 8),
               child: CircleAvatar(
-                backgroundColor: Colors.black.withAlpha(76), // 0.3 * 255 ≈ 76
+                backgroundColor: Colors.black.withAlpha(76),
                 child: IconButton(
                   onPressed: () {
                     context.pop();
@@ -105,7 +106,7 @@ class SleepSoundScreen extends HookConsumerWidget {
                 ),
               ),
             ),
-            centerTitle: true,
+
             title: Text(
               soundCard.titleKey.tr(),
               style: const TextStyle(
@@ -115,18 +116,13 @@ class SleepSoundScreen extends HookConsumerWidget {
                 letterSpacing: 0.5,
               ),
             ),
-            actions: [
-              Container(
-                width: 56, // Для симметрии с leading
-              ),
-            ],
           ),
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
                 children: [
-                  // Анимированная картинка с тенью
+                  //image
                   Container(
                     width: double.infinity,
                     height: 300,
@@ -157,15 +153,13 @@ class SleepSoundScreen extends HookConsumerWidget {
                     ),
                   ),
 
-                  // Таймер с улучшенным дизайном
+                  // timer
                   GestureDetector(
                     onTap: () {
                       showDialog(
                         context: context,
                         barrierDismissible: true,
-                        barrierColor: Colors.black.withAlpha(
-                          178,
-                        ), // 0.7 * 255 ≈ 178
+                        barrierColor: Colors.black.withAlpha(178),
                         builder: (context) {
                           return Dialog(
                             backgroundColor: Colors.transparent,
@@ -185,10 +179,10 @@ class SleepSoundScreen extends HookConsumerWidget {
                         vertical: 16,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white.withAlpha(25), // 0.1 * 255 ≈ 25
+                        color: Colors.white.withAlpha(25),
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
-                          color: Colors.white.withAlpha(51), // 0.2 * 255 ≈ 51
+                          color: Colors.white.withAlpha(51),
                           width: 1,
                         ),
                       ),
@@ -222,7 +216,7 @@ class SleepSoundScreen extends HookConsumerWidget {
 
                   const SizedBox(height: 40),
 
-                  // Улучшенный слайдер громкости
+                  // volume
                   Column(
                     children: [
                       Row(
@@ -230,16 +224,12 @@ class SleepSoundScreen extends HookConsumerWidget {
                         children: [
                           Icon(
                             Icons.volume_down_rounded,
-                            color: Colors.white.withAlpha(
-                              178,
-                            ), // 0.7 * 255 ≈ 178
+                            color: Colors.white.withAlpha(178),
                             size: 22,
                           ),
                           Icon(
                             Icons.volume_up_rounded,
-                            color: Colors.white.withAlpha(
-                              178,
-                            ), // 0.7 * 255 ≈ 178
+                            color: Colors.white.withAlpha(178),
                             size: 22,
                           ),
                         ],
@@ -256,13 +246,9 @@ class SleepSoundScreen extends HookConsumerWidget {
                             overlayRadius: 20,
                           ),
                           activeTrackColor: Colors.white,
-                          inactiveTrackColor: Colors.white.withAlpha(
-                            51,
-                          ), // 0.2 * 255 ≈ 51
+                          inactiveTrackColor: Colors.white.withAlpha(51),
                           thumbColor: Colors.white,
-                          overlayColor: Colors.white.withAlpha(
-                            25,
-                          ), // 0.1 * 255 ≈ 25
+                          overlayColor: Colors.white.withAlpha(25),
                         ),
                         child: Slider(
                           value: volume.value ?? 0.0,
@@ -278,13 +264,12 @@ class SleepSoundScreen extends HookConsumerWidget {
 
                   const Spacer(),
 
-                  // Улучшенные кнопки управления
+                  // button
                   Container(
                     margin: const EdgeInsets.only(bottom: 40),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // Кнопка остановки
                         StreamBuilder(
                           stream: audioHandler.playbackState,
                           builder: (context, snapshot) {
@@ -294,9 +279,7 @@ class SleepSoundScreen extends HookConsumerWidget {
                                 shape: BoxShape.circle,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withAlpha(
-                                      76,
-                                    ), // 0.3 * 255 ≈ 76
+                                    color: Colors.black.withAlpha(76),
                                     blurRadius: 15,
                                     spreadRadius: 3,
                                     offset: const Offset(0, 5),
