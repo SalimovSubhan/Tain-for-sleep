@@ -58,7 +58,7 @@ class AppNavigator {
     required BuildContext context,
     required SoundCardDto soundCard,
   }) {
-    debugPrint("➡️ PUSH: /delivery_status");
+    debugPrint("➡️ PUSH: /timer_screen");
     context.push('/timer_screen', extra: {'soundCard': soundCard});
   }
 }

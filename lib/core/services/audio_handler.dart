@@ -1,7 +1,7 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:audio_session/audio_session.dart';
+import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:rain_for_sleep/shared/shared_data/sound_card_dto.dart';
 
 Future<AudioHandler> initAudioService() async {
   return AudioService.init(
@@ -43,16 +43,6 @@ class MyAudioHandler extends BaseAudioHandler with SeekHandler {
         ),
       );
     });
-
-    mediaItem.add(
-      MediaItem(
-        id: '1',
-        title: 'Rain Sound',
-        album: 'Sleep Sounds',
-        artUri: Uri.parse('assets/images/baground_image.jpg'),
-        duration: null,
-      ),
-    );
   }
 
   @override
@@ -64,32 +54,37 @@ class MyAudioHandler extends BaseAudioHandler with SeekHandler {
   @override
   Future<void> stop() => _player.stop();
 
-  Future<void> setAudioSource({required String urlOrAsset}) async {
-    await _player.setUrl(urlOrAsset);
-  }
-
   @override
   Future<dynamic> customAction(
     String name, [
     Map<String, dynamic>? extras,
   ]) async {
-    switch (name) {
-      case 'setSource':
-        final soundCard = extras?['soundCard'] as SoundCardDto;
+    try {
+      if (name == 'setSource') {
+        final titleKey = extras?['titleKey'] as String;
+        final sound = extras?['sound'] as String;
+        // final image = extras?['image'] as String;
+
+        final session = await AudioSession.instance;
+        await session.configure(const AudioSessionConfiguration.music());
 
         mediaItem.add(
           MediaItem(
-            id: soundCard.sound,
-            title: soundCard.titleKey,
-            artUri: Uri.parse(soundCard.image),
+            id: sound,
+            title: titleKey,
             artist: 'Rain for sleep',
             duration: null,
           ),
         );
-        await _player.setAudioSource(AudioSource.asset(soundCard.sound));
+
+        await _player.setAsset(sound);
+
         await _player.setVolume(1);
         await _player.setLoopMode(LoopMode.one);
-        break;
+        await _player.play();
+      }
+    } on PlayerException catch (e) {
+      debugPrint('$e');
     }
   }
 }

@@ -44,19 +44,32 @@ class SleepSoundScreen extends HookConsumerWidget {
     }
 
     useEffect(() {
-      Future.microtask(() async {
+      () async {
         FlutterVolumeController.addListener((value) {
           volume.value = value;
         });
+
         await Permission.notification.request();
-        audioHandler.customAction('setSource', {'soundCard': soundCard}).then((
-          _,
-        ) {
-          audioHandler.play();
-        });
-      });
+
+        try {
+          await audioHandler.customAction('setSource', {
+            'titleKey': soundCard.titleKey,
+            'sound': soundCard.sound,
+            'image': soundCard.image,
+          });
+        } catch (e) {
+          print(e);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Failed to load audio $e'.tr()),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }();
+
       return () {
-        return FlutterVolumeController.removeListener();
+        FlutterVolumeController.removeListener();
       };
     }, []);
 

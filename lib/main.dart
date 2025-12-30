@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -7,29 +9,37 @@ import 'package:rain_for_sleep/shared/shared_aplication/audio_handler_provider.d
 import 'package:rain_for_sleep/shared/shared_aplication/talker_provider.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
+void main() {
+  runZonedGuarded(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await EasyLocalization.ensureInitialized();
 
-  final audioHandler = await initAudioService();
+      final audioHandler = await initAudioService();
 
-  final container = ProviderContainer(
-    overrides: [audioHandlerProvider.overrideWithValue(audioHandler)],
-  );
+      final container = ProviderContainer(
+        overrides: [audioHandlerProvider.overrideWithValue(audioHandler)],
+      );
 
-  talker = TalkerFlutter.init();
+      talker = TalkerFlutter.init();
 
-  runApp(
-    EasyLocalization(
-      path: 'assets/translations',
-      supportedLocales: const [Locale('en'), Locale('ru'), Locale('tg')],
-      fallbackLocale: const Locale('ru'),
-      saveLocale: true,
-      child: UncontrolledProviderScope(
-        container: container,
-        child: const MyApp(),
-      ),
-    ),
+      runApp(
+        EasyLocalization(
+          path: 'assets/translations',
+          supportedLocales: const [Locale('en'), Locale('ru'), Locale('tg')],
+          fallbackLocale: const Locale('ru'),
+          saveLocale: true,
+          child: UncontrolledProviderScope(
+            container: container,
+            child: const MyApp(),
+          ),
+        ),
+      );
+    },
+    (error, stack) {
+      print(error);
+      print(stack);
+    },
   );
 }
 
