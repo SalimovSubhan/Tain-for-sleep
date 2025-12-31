@@ -10,37 +10,31 @@ import 'package:rain_for_sleep/shared/shared_aplication/talker_provider.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 void main() {
-  runZonedGuarded(
-    () async {
-      WidgetsFlutterBinding.ensureInitialized();
-      await EasyLocalization.ensureInitialized();
+  runZonedGuarded(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await EasyLocalization.ensureInitialized();
 
-      final audioHandler = await initAudioService();
+    final audioHandler = await initAudioService();
 
-      final container = ProviderContainer(
-        overrides: [audioHandlerProvider.overrideWithValue(audioHandler)],
-      );
+    final container = ProviderContainer(
+      overrides: [audioHandlerProvider.overrideWithValue(audioHandler)],
+    );
 
-      talker = TalkerFlutter.init();
+    talker = TalkerFlutter.init();
 
-      runApp(
-        EasyLocalization(
-          path: 'assets/translations',
-          supportedLocales: const [Locale('en'), Locale('ru'), Locale('tg')],
-          fallbackLocale: const Locale('ru'),
-          saveLocale: true,
-          child: UncontrolledProviderScope(
-            container: container,
-            child: const MyApp(),
-          ),
+    runApp(
+      EasyLocalization(
+        path: 'assets/translations',
+        supportedLocales: const [Locale('en'), Locale('ru'), Locale('tg')],
+        fallbackLocale: const Locale('ru'),
+        saveLocale: true,
+        child: UncontrolledProviderScope(
+          container: container,
+          child: const MyApp(),
         ),
-      );
-    },
-    (error, stack) {
-      print(error);
-      print(stack);
-    },
-  );
+      ),
+    );
+  }, (error, stack) {});
 }
 
 class MyApp extends StatelessWidget {
@@ -51,7 +45,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: router,
-      title: 'Дождь для сна',
+      title: 'Nature Sounds',
       locale: context.locale,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
