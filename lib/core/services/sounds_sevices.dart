@@ -195,7 +195,7 @@ class SoundsSevices {
       ),
     ),
     SoundCardDto(
-      sound: 'assets/sounds/snow/snow_storm.wav',
+      sound: 'assets/sounds/snow/snow_storm.mp3',
       image: 'assets/images/snow/snow_4.png',
       titleKey: 'blizzard',
       gradient: const LinearGradient(
