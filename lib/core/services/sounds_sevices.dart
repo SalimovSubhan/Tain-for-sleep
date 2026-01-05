@@ -6,7 +6,7 @@ class SoundsSevices {
   static List<SoundCardDto> allSoundCards = [
     SoundCardDto(
       sound: 'assets/sounds/relax/beach.mp3',
-      image: 'assets/images/relax/relax2.png',
+      image: 'assets/images/relax/relax2.webp',
       titleKey: 'beach',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -16,7 +16,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/sleep/fire.mp3',
-      image: 'assets/images/sleep/sleep2.png',
+      image: 'assets/images/sleep/sleep2.webp',
       titleKey: 'crackling_fire',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -26,7 +26,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/rain_on_window.mp3',
-      image: 'assets/images/rain/rain_1.png',
+      image: 'assets/images/rain/rain_1.webp',
       titleKey: 'rain_on_window',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -36,7 +36,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/morning_rain.mp3',
-      image: 'assets/images/rain/rain_2.png',
+      image: 'assets/images/rain/rain_2.webp',
       titleKey: 'morning_rain',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -46,7 +46,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/relax/fireplace.mp3',
-      image: 'assets/images/relax/relax1.png',
+      image: 'assets/images/relax/relax1.webp',
       titleKey: 'fireplace',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -56,7 +56,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/snow/winter_forest.mp3',
-      image: 'assets/images/snow/snow_1.png',
+      image: 'assets/images/snow/snow_1.webp',
       titleKey: 'winter_silence_forest',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -66,7 +66,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/rain_on_the_umbrela.mp3',
-      image: 'assets/images/rain/rain_3.png',
+      image: 'assets/images/rain/rain_3.webp',
       titleKey: 'rain_on_umbrella',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -76,7 +76,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/relax/walking.mp3',
-      image: 'assets/images/relax/relax6.png',
+      image: 'assets/images/relax/relax6.webp',
       titleKey: 'sand_underfoot',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -86,7 +86,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/snow/snow_house.mp3',
-      image: 'assets/images/snow/snow_2.png',
+      image: 'assets/images/snow/snow_2.webp',
       titleKey: 'snowy_night_house',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -96,7 +96,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/rain_on_the_roof.mp3',
-      image: 'assets/images/rain/rain_4.png',
+      image: 'assets/images/rain/rain_4.webp',
       titleKey: 'rain_on_roof',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -106,7 +106,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/rain_on_leaves.mp3',
-      image: 'assets/images/rain/rain_5.png',
+      image: 'assets/images/rain/rain_5.webp',
       titleKey: 'rain_on_leaves',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -116,7 +116,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/gentle_rain.mp3',
-      image: 'assets/images/rain/rain_6.png',
+      image: 'assets/images/rain/rain_6.webp',
       titleKey: 'gentle_rain',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -126,7 +126,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/relax/forestbirds.mp3',
-      image: 'assets/images/relax/relax3.png',
+      image: 'assets/images/relax/relax3.webp',
       titleKey: 'forest_lake',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -136,7 +136,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/relax/water_small_stream.mp3',
-      image: 'assets/images/relax/relax4.png',
+      image: 'assets/images/relax/relax4.webp',
       titleKey: 'quiet_stream',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -146,7 +146,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/rain_on_the_tent.mp3',
-      image: 'assets/images/rain/rain_7.png',
+      image: 'assets/images/rain/rain_7.webp',
       titleKey: 'rain_on_tent',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -156,7 +156,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/sleep/airplane.mp3',
-      image: 'assets/images/sleep/sleep3.png',
+      image: 'assets/images/sleep/sleep3.webp',
       titleKey: 'in_airplane',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -166,7 +166,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/sleep/beach.mp3',
-      image: 'assets/images/sleep/sleep1.png',
+      image: 'assets/images/sleep/sleep1.webp',
       titleKey: 'evening_beach',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -176,7 +176,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/relax/ocean.mp3',
-      image: 'assets/images/relax/relax5.png',
+      image: 'assets/images/relax/relax5.webp',
       titleKey: 'ocean',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -186,7 +186,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/sleep/night_shore.mp3',
-      image: 'assets/images/sleep/sleep4.png',
+      image: 'assets/images/sleep/sleep4.webp',
       titleKey: 'moonlight',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -196,7 +196,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/snow/snow_storm.mp3',
-      image: 'assets/images/snow/snow_4.png',
+      image: 'assets/images/snow/snow_4.webp',
       titleKey: 'blizzard',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -206,7 +206,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/snow/snowstorm_among_firs.mp3',
-      image: 'assets/images/snow/snow_3.png',
+      image: 'assets/images/snow/snow_3.webp',
       titleKey: 'snowstorm_firs',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -216,7 +216,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/rain_on_the_home.mp3',
-      image: 'assets/images/rain/rain_8.png',
+      image: 'assets/images/rain/rain_8.webp',
       titleKey: 'rain_on_home',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -226,7 +226,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/snow/walk_on_snow.mp3',
-      image: 'assets/images/snow/snow_5.png',
+      image: 'assets/images/snow/snow_5.webp',
       titleKey: 'snow_walk_evening',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -240,7 +240,7 @@ class SoundsSevices {
   static List<SoundCardDto> rainSoundCards = [
     SoundCardDto(
       sound: 'assets/sounds/rain/rain_on_window.mp3',
-      image: 'assets/images/rain/rain_1.png',
+      image: 'assets/images/rain/rain_1.webp',
       titleKey: 'rain_on_window',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -250,7 +250,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/morning_rain.mp3',
-      image: 'assets/images/rain/rain_2.png',
+      image: 'assets/images/rain/rain_2.webp',
       titleKey: 'morning_rain',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -260,7 +260,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/rain_on_the_umbrela.mp3',
-      image: 'assets/images/rain/rain_3.png',
+      image: 'assets/images/rain/rain_3.webp',
       titleKey: 'rain_on_umbrella',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -270,7 +270,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/rain_on_the_roof.mp3',
-      image: 'assets/images/rain/rain_4.png',
+      image: 'assets/images/rain/rain_4.webp',
       titleKey: 'rain_on_roof',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -280,7 +280,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/rain_on_leaves.mp3',
-      image: 'assets/images/rain/rain_5.png',
+      image: 'assets/images/rain/rain_5.webp',
       titleKey: 'rain_on_leaves',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -290,7 +290,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/gentle_rain.mp3',
-      image: 'assets/images/rain/rain_6.png',
+      image: 'assets/images/rain/rain_6.webp',
       titleKey: 'gentle_rain',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -300,7 +300,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/rain_on_the_tent.mp3',
-      image: 'assets/images/rain/rain_7.png',
+      image: 'assets/images/rain/rain_7.webp',
       titleKey: 'rain_on_tent',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -310,7 +310,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/rain/rain_on_the_home.mp3',
-      image: 'assets/images/rain/rain_8.png',
+      image: 'assets/images/rain/rain_8.webp',
       titleKey: 'rain_on_home',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -324,7 +324,7 @@ class SoundsSevices {
   static List<SoundCardDto> snowSoundCards = [
     SoundCardDto(
       sound: 'assets/sounds/snow/winter_forest.mp3',
-      image: 'assets/images/snow/snow_1.png',
+      image: 'assets/images/snow/snow_1.webp',
       titleKey: 'winter_silence_forest',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -334,7 +334,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/snow/snow_house.mp3',
-      image: 'assets/images/snow/snow_2.png',
+      image: 'assets/images/snow/snow_2.webp',
       titleKey: 'snowy_night_house',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -344,7 +344,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/snow/snowstorm_among_firs.mp3',
-      image: 'assets/images/snow/snow_3.png',
+      image: 'assets/images/snow/snow_3.webp',
       titleKey: 'snowstorm_firs',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -354,7 +354,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/snow/snow_storm.wav',
-      image: 'assets/images/snow/snow_4.png',
+      image: 'assets/images/snow/snow_4.webp',
       titleKey: 'blizzard',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -364,7 +364,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/snow/walk_on_snow.mp3',
-      image: 'assets/images/snow/snow_5.png',
+      image: 'assets/images/snow/snow_5.webp',
       titleKey: 'snow_walk_evening',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -378,7 +378,7 @@ class SoundsSevices {
   static List<SoundCardDto> sleepSoundCards = [
     SoundCardDto(
       sound: 'assets/sounds/sleep/beach.mp3',
-      image: 'assets/images/sleep/sleep1.png',
+      image: 'assets/images/sleep/sleep1.webp',
       titleKey: 'evening_beach',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -388,7 +388,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/sleep/fire.mp3',
-      image: 'assets/images/sleep/sleep2.png',
+      image: 'assets/images/sleep/sleep2.webp',
       titleKey: 'crackling_fire',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -398,7 +398,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/sleep/airplane.mp3',
-      image: 'assets/images/sleep/sleep3.png',
+      image: 'assets/images/sleep/sleep3.webp',
       titleKey: 'in_airplane',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -408,7 +408,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/sleep/night_shore.mp3',
-      image: 'assets/images/sleep/sleep4.png',
+      image: 'assets/images/sleep/sleep4.webp',
       titleKey: 'moonlight',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -422,7 +422,7 @@ class SoundsSevices {
   static List<SoundCardDto> relaxSoundCards = [
     SoundCardDto(
       sound: 'assets/sounds/relax/fireplace.mp3',
-      image: 'assets/images/relax/relax1.png',
+      image: 'assets/images/relax/relax1.webp',
       titleKey: 'fireplace',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -432,7 +432,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/relax/beach.mp3',
-      image: 'assets/images/relax/relax2.png',
+      image: 'assets/images/relax/relax2.webp',
       titleKey: 'beach',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -442,7 +442,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/relax/forestbirds.mp3',
-      image: 'assets/images/relax/relax3.png',
+      image: 'assets/images/relax/relax3.webp',
       titleKey: 'forest_lake',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -452,7 +452,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/relax/water_small_stream.mp3',
-      image: 'assets/images/relax/relax4.png',
+      image: 'assets/images/relax/relax4.webp',
       titleKey: 'quiet_stream',
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -462,7 +462,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/relax/ocean.mp3',
-      image: 'assets/images/relax/relax5.png',
+      image: 'assets/images/relax/relax5.webp',
       titleKey: 'ocean',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
@@ -472,7 +472,7 @@ class SoundsSevices {
     ),
     SoundCardDto(
       sound: 'assets/sounds/relax/walking.mp3',
-      image: 'assets/images/relax/relax6.png',
+      image: 'assets/images/relax/relax6.webp',
       titleKey: 'sand_underfoot',
       gradient: const LinearGradient(
         begin: Alignment.topCenter,
